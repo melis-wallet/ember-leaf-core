@@ -1,0 +1,14 @@
+{{#if action}}
+    <a {{action "click" action}} role="menuitem" tab-index="-1">
+      {{#if label }}
+        {{#if icon}}
+            <i class="{{icon}}"/>
+        {{/if}}
+
+        {{label}}
+      {{/if}}
+      {{yield}}
+    </a>
+{{else}}
+  {{yield}}
+{{/if}}

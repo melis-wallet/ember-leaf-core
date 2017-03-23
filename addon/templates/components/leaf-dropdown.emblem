@@ -1,0 +1,6 @@
+= if content
+  = each content as |option|
+    = leaf-dropdown-option action=option.action icon=option.icon label=option.label
+= else
+  = yield
+

@@ -1,0 +1,52 @@
+.row
+  .col-md-6
+    = leaf-panel simple-header=true title='Tooltips' icon='fa fa-leaf'
+      .panel-body
+        = leaf-button label='On a button' tooltip='Hello World'
+        hr
+        = leaf-tooltip tooltip='Hello World'
+          ' On an arbitrary element
+
+    = leaf-panel simple-header=true title='Typed Tooltips' icon='fa fa-leaf'
+      .panel-body
+        = leaf-button label='Success' tooltip='Hello World' type='success' tooltip-class='tooltip-success'
+
+
+  .col-md-6
+    = leaf-panel simple-header=true title='Popovers' icon='fa fa-leaf'
+      .panel-body
+        = leaf-button label='On a button' popover-title='Hello World' tooltip-placement='bottom' popover='I am here!'
+        hr
+        = leaf-tooltip popover='Hello World'
+          ' On an arbitrary element
+
+    = leaf-panel simple-header=true title='Typed Popovers' icon='fa fa-leaf'
+      .panel-body
+        .spaced = leaf-button label='Success' popover='Hello World' popover-title='Success Dark'  type='success' tooltip-class='popover-success popover-dark'
+        .spaced = leaf-button label='Warning' popover='Hello World' popover-title='Warning Light'  type='warning' tooltip-class='popover-warning'
+        hr
+        .spaced = leaf-button label='Info' popover='Hello World' popover-title='Info Colorful'  type='info' tooltip-class='popover-info popover-colorful'
+        .spaced = leaf-button label='Danger' popover='Hello World' popover-title='Danger Colorful Dark'  type='danger' tooltip-class='popover-danger popover-colorful popover-dark'
+
+    = leaf-panel simple-header=true title='Popovers' icon='fa fa-leaf'
+      .panel-body
+
+        .spaced = leaf-button label='Reveal' on-click='toggleHidden'
+        if showHidden
+          .spaced = leaf-button type='primary' label='Hidden button' popover-title='Hello World' tooltip-placement='bottom' popover='I was hidden!'
+
+
+
+    = leaf-panel simple-header=true title='HTML Popovers' icon='fa fa-leaf'
+      .panel-body
+        = leaf-button label='HTML on button' popover-element-id='#my-popover'
+
+    #my-popover.hidden
+      = leaf-panel class='no-border' style='min-width: 350px;'
+        = leaf-panel-header title='Whoa! A Panel!'
+          = leaf-tabs-control size='xs' selected-idx=idx simple=true as |ctrl|
+            = leaf-tab title='One' icon='fa fa-leaf' parent=ctrl
+            = leaf-tab title='Two' icon='fa fa-user' parent=ctrl
+        .panel-body
+          | Panel body content
+

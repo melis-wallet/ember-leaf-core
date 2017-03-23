@@ -1,0 +1,13 @@
+
+= leaf-button type=type size=size variant=variant on-click='pairedButtonClick'
+  = if label
+    = label
+  = else
+    = if content
+      = yield
+= leaf-button type=type size=size variant=variant data-toggle='dropdown' class='dropdown-toggle'
+   span class=iconClass
+
+= leaf-dropdown role='menu' align=align
+  = yield
+

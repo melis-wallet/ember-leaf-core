@@ -1,0 +1,34 @@
+.row
+  .col-md-6
+    = leaf-panel simple-header=true title='Dropdowns' icon='fa fa-leaf' style='min-height: 200px;'
+      .spaced
+        = leaf-dropdown class='fubar' style='display: block; position: relative;'
+          = leaf-dropdown-option action='foo_foo' value='Foo' label='Foo'
+          = leaf-dropdown-option action='foo_foo' value='Bar' label='Bar'
+          = leaf-dropdown-option action='foo_foo' value='Baz' label='Baz'
+      .spaced
+
+        = leaf-dropdown  style='display: block; position: relative;'
+          = leaf-dropdown-option action='foo_foo' label='Foo' icon='fa fa-home'
+            = leaf-label class='pull-right' type='success'
+              | 12
+          = leaf-dropdown-option action='foo_foo' label='Bar' icon='fa fa-code'
+            = leaf-badge class='pull-right' type='info'
+              | 4
+          = leaf-dropdown-option action='foo_foo' label='Baz' icon='fa fa-cog'
+          = leaf-dropdown-option type='divider'
+          = leaf-dropdown-option type='header'
+            | DROPDOWN HEADER
+          = leaf-dropdown-option action='foo_foo' label='Qaaz' icon='fa fa-cloud'
+
+
+
+    = leaf-panel simple-header=true title='Dropdowns' icon='fa fa-leaf'
+      .spaced
+        = leaf-dropdown-button label='Select one' on-paired-button='buttonClicked'
+          = leaf-dropdown-option action='foo_foo' value='Foo' label='Foo'
+          = leaf-dropdown-option action='foo_foo' value='Bar' label='Bar'
+      .spaced
+        = leaf-dropdown-button label='Right aligned' align='right' type='primary'
+          = leaf-dropdown-option action='foo_foo' value='Foo' label='Foo'
+          = leaf-dropdown-option action='foo_foo' value='Bar' label='Bar'

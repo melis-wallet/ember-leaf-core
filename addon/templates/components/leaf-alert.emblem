@@ -1,0 +1,6 @@
+if dismiss
+  a.close  href='#' click='dismiss-alert'
+    i.fa.fa-times-circle-o
+if message
+  == message
+= yield

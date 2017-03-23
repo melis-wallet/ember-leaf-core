@@ -1,0 +1,69 @@
+.row
+  .col-md-6
+    = leaf-panel simple-header=true title='Labels, Badges and Tags' icon='fa fa-leaf'
+      .panel-body.no-padding-t.with-margins
+        h6.text-semibold.text-light-gray.text-xs LABELS
+        = each ccTypes as |comp|
+          .spaced = leaf-label content=comp type=comp
+        hr.panel-wide
+        h6.text-semibold.text-light-gray.text-xs BADGES
+        = each ccTypes as |comp|
+          .spaced = leaf-badge content=comp type=comp
+        hr.panel-wide
+        h6.text-semibold.text-light-gray.text-xs TAGS
+        = each ccTypes as |comp|
+          .spaced = leaf-label content=comp type=comp label-tag=true
+
+    = leaf-panel simple-header=true title='Progress Bars' icon='fa fa-leaf'
+      .panel-body.no-padding-t.with-margins
+        h6.text-semibold.text-light-gray.text-xs PLAIN
+        = each  ccTypes as |comp|
+          = leaf-progress value=60 type=comp
+
+        hr.panel-wide
+        h6.text-semibold.text-light-gray.text-xs STRIPED
+        = each ccTypes as |comp|
+          = leaf-progress value=60 type=comp striped=true
+
+        hr.panel-wide
+        h6.text-semibold.text-light-gray.text-xs ANIMATED
+        //= each ccTypes as |comp|
+          = leaf-progress value=60 type=this animated=true
+          `
+  .col-md-6
+    = leaf-panel simple-header=true title='Pagination' icon='fa fa-leaf'
+      .panel-body
+        h6.text-semibold.text-light-gray.text-xs DEFAULT
+        = leaf-pagination totalPages=10
+        h6.text-semibold.text-light-gray.text-xs SIZES
+        = leaf-pagination totalPages=10 size='xs'
+        = leaf-pagination totalPages=10 size='sm'
+        = leaf-pagination totalPages=10 size='lg'
+
+
+    = leaf-panel simple-header=true title='Switchers' icon='fa fa-leaf'
+      .panel-body
+        .spaced
+          = leaf-switcher checked=isChecked
+        .spaced
+          = leaf-switcher checked=isChecked disabled=true
+        .spaced
+          = leaf-switcher checked=isChecked onLabel='YES' offLabel='NO' onIcon=null offIcon=null
+        .spaced
+          = leaf-switcher checked=isChecked onLabel='ON' offLabel='OFF' onIcon=null offIcon=null
+        hr.panel-wide
+        h6.text-semibold.text-light-gray.text-xs SIZES
+        = each sizes as | size |
+          .spaced
+             = leaf-switcher checked=isChecked size=size
+
+        hr.panel-wide
+        h6.text-semibold.text-light-gray.text-xs TYPES
+        = each ccTypes as | type |
+          .spaced
+             = leaf-switcher checked=isChecked type=type
+        hr.panel-wide
+        h6.text-semibold.text-light-gray.text-xs THEMES
+        = each themes as | theme |
+          .spaced
+             = leaf-switcher checked=isChecked theme=theme

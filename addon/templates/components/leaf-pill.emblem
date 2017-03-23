@@ -1,0 +1,6 @@
+a
+  = if icon
+    i class=icon
+    '
+  = title
+  = yield

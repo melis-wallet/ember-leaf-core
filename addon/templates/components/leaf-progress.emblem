@@ -1,0 +1,2 @@
+= yield
+.progress-bar class=barTypeClass style=barStyle

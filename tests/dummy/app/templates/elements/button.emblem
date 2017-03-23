@@ -1,0 +1,142 @@
+
+.row
+  .col-md-6
+    // -- DEFAULT BUTTONS ---------------------------------------------------------------------
+    = leaf-panel title='Default Buttons' simple-header=true
+      .panel-body
+        = each btnTypes as |btn|
+          .spaced
+            = leaf-button label=btn type=btn
+
+    // -- ROUNDED BUTTONS ---------------------------------------------------------------------
+    = leaf-panel title='Rounded Buttons' simple-header=true
+      .panel-body
+        = each btnTypes as |btn|
+          .spaced
+            = leaf-button label=btn type=btn variant='rounded'
+
+    // -- FLAT BUTTONS ------------------------------------------------------------------------
+    = leaf-panel title='Flat Buttons' simple-header=true
+      .panel-body
+        = each btnTypes as |btn|
+          .spaced
+            = leaf-button label=btn type=btn variant='flat'
+
+
+  .col-md-6
+
+    // -- BUTTON SIZES ------------------------------------------------------------------------
+    = leaf-panel title='Button Sizes' simple-header=true
+      .panel-body
+        .spaced = leaf-button label='large' type='default' size='lg'
+        .spaced = leaf-button label='normal' type='primary'
+        .spaced = leaf-button label='small' type='warning' size='sm'
+        .spaced = leaf-button label='extra small' type='success' size='xs'
+
+    // -- OUTLINE BUTTONS ----------------------------------------------------------------------
+    = leaf-panel title='Outline Buttons' simple-header=true
+      .panel-body
+        .spaced = leaf-button label='large' type='default' size='lg' outline=true
+        .spaced = leaf-button label='normal' type='default' variant='rounded' outline=true
+        .spaced = leaf-button label='small' type='default' size='sm' variant='flat' outline=true
+        .spaced = leaf-button label='extra small' type='default' size='xs' outline=true
+
+    // -- DISABLED BUTTONS ---------------------------------------------------------------------
+    = leaf-panel title='Disabled Buttons' simple-header=true
+     .panel-body
+      p = each btnTypes as |btn|
+        .spaced = leaf-button label=btn type=btn disabled=true
+      p = each btnTypes as |btn|
+        .spaced = leaf-button label=btn type=btn disabled=true variant='rounded'
+      p = each btnTypes as |btn|
+        .spaced = leaf-button label=btn type=btn disabled=true variant='flat'
+      p = each btnTypes as |btn|
+        .spaced = leaf-button label=btn type=btn disabled=true outline=true
+      p = each btnTypes as |btn|
+        .spaced = leaf-button label=btn type=btn disabled=true variant='flat' outline=true
+
+
+.row
+  .col-md-6
+    // -- LABELS AND ICONS --------------------------------------------------------------------
+    = leaf-panel title='Buttons with simple labels' simple-header=true
+      .panel-body
+        .spaced = leaf-button icon='fa fa-code' label='label' type='default'
+        .spaced = leaf-button icon='fa fa-code' label='label' type='primary' variant='rounded'
+        .spaced = leaf-button icon='fa fa-code' label='label' type='success' variant='flat'
+        .spaced = leaf-button icon='fa fa-code' label='label' type='success' outline=true
+
+    = leaf-panel title='Labeled buttons' simple-header=true
+      .panel-body
+        .spaced = leaf-button icon='fa fa-code' label='label' type='default' labeled=true
+        .spaced = leaf-button icon='fa fa-code' label='label' type='primary' labeled=true variant='rounded'
+        .spaced = leaf-button icon='fa fa-code' label='label' type='success' labeled=true variant='flat'
+        .spaced = leaf-button icon='fa fa-code' label='label' type='success' labeled=true outline=true
+
+    // -- BLOCK BUTTONS -----------------------------------------------------------------------
+    = leaf-panel title='Block Buttons' simple-header=true
+      .panel-body
+         = leaf-button icon='fa fa-code' label='label' type='default' block=true
+         = leaf-button icon='fa fa-code' label='label' type='primary' block=true labeled=true
+         = leaf-button icon='fa fa-code' label='label' type='success' block=true labeled=true variant='flat'
+
+  .col-md-6
+    // -- BUTTON GROUPS -----------------------------------------------------------------------
+    = leaf-panel title='Button Groups' simple-header=true
+      .panel-body
+        p = leaf-button-group type='default' as |g|
+          = leaf-button label='left' group=g
+          = leaf-button label='middle' group=g
+          = leaf-button label='right' group=g
+
+        p = leaf-button-group as |g|
+          = leaf-button label='left' group=g
+          = leaf-button label='middle' group=g
+          = leaf-button label='right' type='warning' group=g
+
+        p = leaf-button-group type='primary' size='lg' as |g|
+          = leaf-button label='left' group=g
+          = leaf-button label='middle' group=g
+          = leaf-button label='right' group=g
+
+        p = leaf-button-group type='success' size='sm' as |g|
+          = leaf-button label='left' group=g
+          = leaf-button label='middle' group=g
+          = leaf-button label='right' group=g
+
+        p = leaf-button-group type='primary' outline=true block=true as |g|
+          = leaf-button label='left' group=g
+          = leaf-button label='middle' group=g
+          = leaf-button label='right' group=g
+
+        p = leaf-button-group type='primary' class='btn-group-justified'
+          a.btn href='#'
+            | left
+          a.btn href='#'
+            | middle
+          a.btn href='#'
+            | right
+
+.row
+  .col-md-6
+    // -- BUTTON EVENTS -----------------------------------------------------------------------
+    = leaf-panel title='Button events' simple-header=true
+      .panel-body
+        = leaf-button label='increment' type='primary' on-click='increment'
+        '
+        |count:
+        '
+        = count
+
+    // -- BUTTON STATE -----------------------------------------------------------------------
+    = leaf-panel title='Button State' simple-header=true
+      .panel-body
+        .spaced = leaf-button label='push me' type='primary' show-state=true on-click='submitDelayed' executing='working' icon='fa fa-cog' icon-executing='fa fa-refresh fa-spin' labeled=true
+        .spaced = leaf-button label='push me too' type='warning' show-state=true on-click='submitDelayed' executing='working' resolved='done' icon='fa fa-cog' icon-executing='fa fa-refresh fa-spin' icon-resolved='fa fa-check' labeled=true
+        .spaced = leaf-button label='going to fail' type='danger' show-state=true on-click='submitDelayedFail' executing='working' rejected='error!' icon='fa fa-cog' icon-executing='fa fa-refresh fa-spin' icon-rejected='fa fa-times-circle-o' labeled=true
+
+    // -- BUTTON TOGGLE -----------------------------------------------------------------------
+    = leaf-panel title='Button Toggle' simple-header=true
+      .panel-body
+        .spaced = leaf-button label='push me' type='primary' on-click='toggle' active=btnActive
+        .spaced = btnActive

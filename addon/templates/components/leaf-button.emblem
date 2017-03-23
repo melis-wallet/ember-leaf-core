@@ -1,0 +1,11 @@
+
+= if iconClasses
+  = if labeled
+    .btn-label
+      i class=iconClasses
+  = else
+    i.btn-label class=iconClasses
+'
+= if label
+  = btnLabel
+= yield

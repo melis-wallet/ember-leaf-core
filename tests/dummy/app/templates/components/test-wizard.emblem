@@ -1,0 +1,32 @@
+= leaf-wizards-control selected-idx=step completed-steps=completed step-back=true as |ctrl|
+  = leaf-wizard-step caption='Step 1' number=1 description='This is the first step'  parent=ctrl idx=1
+  = leaf-wizard-step caption='Step 2' number=2 description='This is the second step' parent=ctrl idx=2
+  = leaf-wizard-step caption='Step 3' number=3 description='This is the third step'  parent=ctrl idx=3
+  = leaf-wizard-step caption='Step 4' number=4 description='This is the fourth step' parent=ctrl idx=4
+  = leaf-wizard-step caption='Step 5' number=5 description='This is the final step'  parent=ctrl idx=5
+
+= if wizardComplete
+  .panel-body
+    | Done
+= else
+  = leaf-navs-content class="wizard-content" bordered=true selected-idx=step as |content|
+    = leaf-navs-panel parent=content idx=1
+      | Content 1
+      .pull-right
+        = leaf-button type='primary' on-click='complete-step' value=1 icon='fa fa-arrow-right'
+    = leaf-navs-panel parent=content idx=2
+      | Content 2
+      .pull-right
+        = leaf-button type='primary' on-click='complete-step' value=2 icon='fa fa-arrow-right'
+    = leaf-navs-panel parent=content idx=3
+      | Content 3
+      .pull-right
+        = leaf-button type='primary' on-click='complete-step' value=3 icon='fa fa-arrow-right'
+    = leaf-navs-panel parent=content idx=4
+      | Content 4
+      .pull-right
+        = leaf-button type='primary' on-click='complete-step' value=4 icon='fa fa-arrow-right'
+    = leaf-navs-panel parent=content idx=5
+      | Content 5
+      .pull-right
+        = leaf-button type='success' on-click='complete-step' value=5 icon='fa fa-check'

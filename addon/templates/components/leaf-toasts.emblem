@@ -1,0 +1,2 @@
+= each messages as |message|
+  = leaf-toast message=message

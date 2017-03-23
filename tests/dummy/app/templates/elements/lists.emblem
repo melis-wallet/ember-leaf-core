@@ -1,0 +1,47 @@
+.row
+  .col-md-6
+    = leaf-panel simple-header=true title='Lists' icon='fa fa-leaf'
+      .panel-body
+        = leaf-list-group as |lst|
+          = leaf-list-item list=lst
+            | Cras justo odio
+            = leaf-badge type='primary' content=47
+          = leaf-list-item list=lst
+            | Dapibus ac facilisis in
+            = leaf-badge type='info' content=12
+          = leaf-list-item list=lst
+            | Morbi leo risus
+            = leaf-badge type='warning' content=4
+          = leaf-list-item list=lst
+            | Porta ac consectetur ac
+            = leaf-badge type='danger' content=17
+          = leaf-list-item list=lst
+            | Vestibulum at eros
+            = leaf-badge type='success' content=6
+
+        = leaf-list-group variant='links' tagName='nav' selectedClass='active' as |lst|
+          = leaf-list-item tagName='a' list=lst
+            | Cras justo odio
+            = leaf-badge type='primary' content=47
+          = leaf-list-item tagName='a' list=lst
+            | Dapibus ac facilisis in
+            = leaf-badge type='info' content=12
+          = leaf-list-item tagName='a' list=lst
+            | Morbi leo risus
+            = leaf-badge type='warning' content=4
+          = leaf-list-item tagName='a' list=lst
+            | Porta ac consectetur ac
+            = leaf-badge type='danger' content=17
+          = leaf-list-item tagName='a' list=lst
+            | Vestibulum at eros
+            = leaf-badge type='success' content=6
+
+
+  .col-md-6
+    = leaf-panel simple-header=true title='Notes' icon='fa fa-leaf'
+      .panel-body
+        = each nTypes as |note|
+          = leaf-note type=note title=note
+            | This is an example note of type
+            '
+            = note

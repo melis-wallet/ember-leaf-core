@@ -1,0 +1,5 @@
+= if is-open
+  = leaf-modal-backdrop modal=this on-click='backdropClicked'
+  = leaf-modal-dialog modal=this size=size
+    = yield this
+

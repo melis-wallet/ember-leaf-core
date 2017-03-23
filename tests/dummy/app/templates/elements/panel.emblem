@@ -1,0 +1,185 @@
+.row
+  .col-md-12
+    = leaf-panel
+      .panel-body
+        | This is a large panel
+
+.row
+  .col-md-6
+    = leaf-panel
+      .panel-body
+        | Panel body content
+
+    = leaf-panel  simple-header=true title='With Title'
+      .panel-body
+        | Panel body content
+
+  .col-md-6
+    = leaf-panel simple-header=true title='With Icon' icon='fa fa-leaf'
+      .panel-body
+        | Panel body content
+      .panel-footer
+        | And footer
+
+.row
+  .col-md-6
+    = leaf-panel
+      = leaf-panel-header title='With Tabs'
+        = leaf-tabs-control size='xs' selected-idx=idx as |ctrl|
+          = leaf-tab title='One' icon='fa fa-leaf' parent=ctrl
+          = leaf-tab title='Two' icon='fa fa-user' parent=ctrl
+      .panel-body
+        | Panel body content
+
+    = leaf-panel
+      = leaf-panel-header title='With Different Tabs'
+        = leaf-tabs-control size='xs' selected-idx=idx simple=true as |ctrl|
+          = leaf-tab title='One' icon='fa fa-leaf' parent=ctrl
+          = leaf-tab title='Two' icon='fa fa-user' parent=ctrl
+      .panel-body
+        | Panel body content
+
+    = leaf-panel
+      = leaf-panel-header title='With Progress Bar' controls-style='width: 30%'
+        = leaf-progress style='width: 100%' striped=true value=40
+      .panel-body
+        | Panel body content
+
+    = leaf-panel
+      = leaf-panel-header title='With Switcher'
+        = leaf-switcher checked=isChecked size='sm'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel
+      = leaf-panel-header title='With Pagination'
+        = leaf-pagination totalPages=3 size='xs'
+      .panel-body
+        | Panel body content
+
+  .col-md-6
+    = leaf-panel
+      = leaf-panel-header title='With Buttons' icon='fa fa-leaf'
+        = leaf-button type='warning' label='button' size='sm'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel
+      = leaf-panel-header title='With More Buttons'
+        = leaf-button type='warning' label='refresh' size='sm' outline=true icon='fa fa-refresh'
+        = leaf-button type='primary'  size='sm' outline=true icon='fa fa-home'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel
+      = leaf-panel-header title='With Buttons and Text'
+        span.panel-heading-text
+          em
+            | This is some text with
+            '
+            a href='#' Link
+        '
+        span style="color: #ccc" |
+        = leaf-button type='default' label='refresh' size='sm' outline=true icon='fa fa-refresh'
+      .panel-body
+        | Panel body content
+
+
+    = leaf-panel
+      = leaf-panel-header title='With Labels and Badges'
+        = leaf-label type='warning' content='tag' label-tag=true
+        = leaf-label type='danger' content='label'
+        = leaf-badge type='info' content='badge'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel
+      = leaf-panel-header title='With Inputs' controls-style='width: 30%'
+        form
+          .input-group.input-group-sm
+            = input type=text class='form-control' placeholder='Search...'
+            span.input-group-btn
+              = leaf-button icon='fa fa-search'
+      .panel-body
+        | Panel body content
+
+.row
+  .col-md-6
+    = leaf-panel type='danger'
+      = leaf-panel-header title='Panel - Danger' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+    = leaf-panel type='danger' colorful=true
+      = leaf-panel-header title='Panel - Danger' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel type='success'
+      = leaf-panel-header title='Panel - Success' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+    = leaf-panel type='success' colorful=true
+      = leaf-panel-header title='Panel - Success' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel type='warning'
+      = leaf-panel-header title='Panel - Warning' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+    = leaf-panel type='warning' colorful=true
+      = leaf-panel-header title='Panel - Warning' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel type='info'
+      = leaf-panel-header title='Panel - Info' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+    = leaf-panel type='info' colorful=true
+      = leaf-panel-header title='Panel - Info' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel type='transparent'
+      = leaf-panel-header title='Panel - Transparent' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+
+  .col-md-6
+    = leaf-panel type='danger' dark=true
+      = leaf-panel-header title='Panel - Danger' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+    = leaf-panel type='danger' dark=true colorful=true
+      = leaf-panel-header title='Panel - Danger' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel type='success' dark=true
+      = leaf-panel-header title='Panel - Success' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+    = leaf-panel type='success' dark=true colorful=true
+      = leaf-panel-header title='Panel - Success' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel type='warning' dark=true
+      = leaf-panel-header title='Panel - Warning' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+    = leaf-panel type='warning' dark=true colorful=true
+      = leaf-panel-header title='Panel - Warning' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+
+    = leaf-panel type='info' dark=true
+      = leaf-panel-header title='Panel - Info' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+    = leaf-panel type='info' dark=true colorful=true
+      = leaf-panel-header title='Panel - Info' icon='fa fa-inbox'
+      .panel-body
+        | Panel body content
+

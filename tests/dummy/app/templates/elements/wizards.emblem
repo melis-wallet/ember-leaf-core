@@ -1,0 +1,11 @@
+.row
+  .col-md-8
+    = leaf-panel simple-header=true title='Wizards' icon='fa fa-magic'
+      = test-wizard class="panel-body"
+  .col-md-4
+    = leaf-panel simple-header=true title='Modal Wizards' icon='fa fa-magic'
+      .panel-body
+        = leaf-button size='lg' label='Open Wizard' type='primary' icon='fa fa-check' on-click='openModalWizard'
+        = leaf-modal id='modal-wizard' dismiss=false size='lg' as |mod|
+          = if mod.is-open
+            = test-wizard

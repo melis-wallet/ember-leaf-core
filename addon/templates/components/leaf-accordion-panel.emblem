@@ -1,0 +1,14 @@
+= if simple-header
+  .panel-heading
+    a.accordion-toggle class=accordionToggleClass href='#' click='selectPanel'
+      = if icon
+        span.label
+          i class=icon
+      '
+      = title
+div class=accordionBodyClass
+  = if body
+    .panel-body
+      = yield
+  = else
+    = yield

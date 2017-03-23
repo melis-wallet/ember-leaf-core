@@ -1,0 +1,40 @@
+= leaf-toasts location="top"
+= leaf-toasts location="bottom"
+.row
+  .col-md-12
+    = leaf-panel
+      = leaf-panel-header title='Toasts' icon='fa fa-leaf'
+
+        = leaf-button type='primary' label='show' size='sm' outline=true on-click='showToast'
+
+      .panel-body
+        form.form-horizontal
+          .form-group
+            label.control-label.col-sm-2 Text
+            .input-group
+              span.input-group-addon
+                i.fa.fa-leaf
+              = input type='text' id='toast_text' value=toastText size='40' class='form-control'
+          .form-group
+            label.control-label.col-sm-2 Type
+            .input-group
+              = x-select value=toastType class='form-control'
+                = each toastTypes as |type|
+                  = x-option value=type
+                    = type
+
+          .form-group
+            label.control-label.col-sm-2 Location
+            .input-group
+              = x-select value=toastLocation class='form-control'
+                = each toastLocations as |loca|
+                  = x-option value=loca
+                    = loca
+
+          .form-group
+            label.control-label.col-sm-2 Status
+            .input-group
+              = x-select value=toastStatus class='form-control'
+                = each toastStatuses as |stat|
+                  = x-option value=stat
+                    = stat

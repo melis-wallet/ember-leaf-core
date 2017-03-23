@@ -1,0 +1,69 @@
+.row
+  .col-md-6
+    = leaf-panel simple-header=true title='Alerts' icon='fa fa-leaf'
+      .panel-body
+        = each alTypes as |alrt|
+          = leaf-alert type=alrt animated=false
+            h4
+              | This is an alert of type
+              '
+              = alrt
+            p ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.
+
+    = leaf-panel simple-header=true title='Auto Dismissable alerts' icon='fa fa-leaf'
+      .panel-body
+        = leaf-alert type='success' dismiss-after=5
+          h4
+            | This alert will dismiss
+          p after five seconds
+
+
+  .col-md-6
+    = leaf-panel simple-header=true title='Dark Alerts' icon='fa fa-leaf'
+      .panel-body
+        =  each alTypes as |alrt|
+          = leaf-alert type=alrt dark=true
+            .small I can also have a line here
+            h4
+              | This is an alert of type
+              '
+              = alrt
+            p Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.
+
+
+.row
+  .col-md-6
+    = leaf-panel
+      = leaf-panel-header title='Alert Area' icon='fa fa-leaf'
+        = leaf-button type='warning' label='Alert' size='sm' on-click='addAlert'
+      .panel-body
+        = leaf-alert-area alerts=alerts dark=true dismiss-after=5
+        | This is the panel body.
+
+  .col-md-6
+    = leaf-panel
+      = leaf-panel-header title='Embedded Alert Area' icon='fa fa-leaf'
+        = leaf-button type='warning' label='Alert' size='sm' on-click='addEmbAlert'
+      = leaf-alert-area alerts=elementAlerts dark=true embedded=true
+
+      .panel-body
+        | This is the panel body.
+
+    = leaf-panel
+      = leaf-panel-header title='Embedded Alert Area (dismissable)' icon='fa fa-leaf'
+        = leaf-button type='warning' label='Alert' size='sm' on-click='addDisEmbAlert'
+      = leaf-alert-area alerts=disElementAlerts dark=true embedded=true dismiss-after=2
+
+      .panel-body
+        | This is the panel body.
+
+    = leaf-panel
+      = leaf-panel-header title='Embedded Alert Area' icon='fa fa-leaf'
+      = leaf-alert-area embedded=true as |area|
+        = leaf-alert type='danger' dark=true alertArea=area
+
+          h4
+            | Hello World
+          p Pippo
+      .panel-body
+        | This is the panel body.

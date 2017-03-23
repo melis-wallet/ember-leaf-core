@@ -1,0 +1,21 @@
+= if pager
+  // todo
+
+= else
+  li class={:previous isFirst:disabled}
+    a href='#' click='previous'
+      = paginationPrevious
+
+  = each pageItems as |item|
+    = if item.ellipses
+      li.disabled
+        a
+          == paginationEllipsis
+    = else
+      li class={item.current:active}
+        a href='#' click="'setCurrent' item.page"
+          = item.page
+  li class={:next isLast:disabled}
+    a href='#' click='next'
+      = paginationNext
+

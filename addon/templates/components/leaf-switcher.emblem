@@ -1,0 +1,14 @@
+= input type='checkbox' name=name checked=checked
+.switcher-toggler
+.switcher-inner
+  .switcher-state-on
+    = if onIcon
+      i class=onIcon
+    '
+    = onLabel
+  .switcher-state-off
+    = if offIcon
+      i class=offIcon
+    '
+    = offLabel
+  = yield

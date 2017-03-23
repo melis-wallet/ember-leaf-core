@@ -1,0 +1,7 @@
+a href='#' click='stepTo'
+  span.wizard-step-number
+    = number
+  span.wizard-step-caption
+    = caption
+    span.wizard-step-description
+      = description

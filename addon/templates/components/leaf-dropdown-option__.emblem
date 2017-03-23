@@ -1,0 +1,10 @@
+= if action
+  a role='menuitem' tab-index='-1' click=action
+    = if label
+      = if icon
+        i class='dropdown-icon {{unbound icon}}'
+        '
+      = label
+    = yield
+else
+  = yield

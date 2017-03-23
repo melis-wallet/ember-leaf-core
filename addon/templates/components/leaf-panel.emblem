@@ -1,0 +1,8 @@
+= if simple-header
+  .panel-heading class=headingClass
+    span.panel-title
+      = if icon
+        i class=icon
+      '
+      = title
+= yield

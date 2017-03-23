@@ -1,0 +1,4 @@
+= if rendered
+  = yield this
+
+

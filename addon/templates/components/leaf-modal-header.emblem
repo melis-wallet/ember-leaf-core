@@ -1,0 +1,7 @@
+= unless omitCloseBtn
+  = leaf-modal-button class='close' value='x' modal=modal dismiss=true
+    | &times;
+= if title
+  h4.modal-title
+    = title
+= yield

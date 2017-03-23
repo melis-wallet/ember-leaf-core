@@ -1,0 +1,60 @@
+leaf-modal-alert id='global-alert'
+.row
+  .col-md-6
+    = leaf-panel simple-header=true title='Modals' icon='fa fa-leaf'
+      .panel-body
+        .spaced = leaf-button size='lg' label='toggle' type='primary' icon='fa fa-check' on-click='openModal' value='test-modal-1'
+        .spaced = leaf-button size='lg' label='bottom modal' type='default' icon='fa fa-check' on-click='openModal' value='test-modal-2'
+
+        = leaf-modal id='test-modal-1' as |mod|
+          = leaf-modal-header title='Hello I am a modal' modal=mod
+
+
+          = leaf-modal-body
+            p Hello World
+          = leaf-modal-footer modal=mod
+            = leaf-modal-button icon='fa fa-code' type='default' label='Dismiss' modal=mod dismiss=true
+            = leaf-modal-button icon='fa fa-check' type='primary' label='Ok' modal=mod value='ok'
+
+
+        = leaf-modal id='test-modal-2' bottom=true as |mod|
+          = leaf-modal-header title='A bottom modal' modal=mod
+
+          = leaf-modal-body
+            p Hello World
+          = leaf-modal-footer modal=mod
+            = leaf-modal-button icon='fa fa-check' type='primary' label='Ok' modal=mod value='ok'
+
+
+    /= leaf-panel simple-header=true title='Modals Observing a property' icon='fa fa-leaf'
+      .panel-body
+        = leaf-button size='lg' label='toggle' type='primary' icon='fa fa-check' on-click='xxsetOpenModal'
+        p
+          | condition:
+          '
+          = openModal
+        = leaf-modal id='modal2' open-if=xxopenModal as |mod|
+          = leaf-modal-header title='Hello I am a conditional modal' modal=mod
+
+          = leaf-modal-body
+            p Hello World
+          = leaf-modal-footer
+            = leaf-modal-toggler icon='fa fa-check' type='primary' label='Ok'
+
+    = leaf-panel simple-header=true title='Alert Modals' icon='fa fa-leaf'
+      .panel-body
+        = each alTypes as |modal|
+          .spaced
+            = leaf-button label=modal type=modal icon='fa fa-check' on-click=modal
+            '
+            = leaf-modal-alert id=modal title=modal type=modal
+              | Hello world!
+
+
+    = leaf-panel simple-header=true title='Simple Alert Modals with showAlert()' icon='fa fa-leaf'
+      .panel-body
+        = each alTypes as |modal|
+          .spaced
+            = leaf-button label=modal type=modal icon='fa fa-check' on-click="simpleAlert" value=modal
+
+

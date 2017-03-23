@@ -1,0 +1,21 @@
+= if is-open
+  = leaf-modal-backdrop modal=this
+  = leaf-modal-dialog modal=this
+    = leaf-modal-header omitCloseBtn=true modal=this
+      i class=iconClass
+    if title
+      .modal-title
+        p = title
+    .modal-body
+      p = caption
+      = yield
+    .modal-footer
+      = if hasCancel
+        .row
+          .col-xs-6
+            p = leaf-modal-button icon=cancelIcon modal=this value='dismiss' label=cancelLabel labeled=true block=true
+          .col-xs-6
+            p = leaf-modal-button icon=okIcon modal=this value='ok' type=type label=okLabel labeled=true block=true
+
+      = else
+        p = leaf-modal-button icon=okIcon modal=this value='ok' type=type label=okLabel labeled=true block=false

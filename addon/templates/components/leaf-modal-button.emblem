@@ -1,0 +1,5 @@
+= if iconClasses
+  i.btn-label class=iconClasses
+  |&nbsp;
+= btnLabel
+= yield

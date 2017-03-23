@@ -1,0 +1,79 @@
+.row
+  .col-sm-12
+    = leaf-panel simple-header=true title='Heading and paragraphs'
+
+      table.table.table-bordered
+        thead
+          tr
+            th.panel-padding-h width='30%'
+              | Type
+            th.panel-padding-h
+              | Example
+        tbody
+          tr
+            td.panel-padding
+              | Headings
+            td.panel-padding
+              h6
+                | Heading 6
+                '
+                small Secondary text
+              h5
+                | Heading 5
+                '
+                small Secondary text
+              h4
+                | Heading 4
+                '
+                small Secondary text
+              h3
+                | Heading 3
+                '
+                small Secondary text
+              h2
+                | Heading 2
+                '
+                small Secondary text
+              h1
+                | Heading 1
+                '
+                small Secondary text
+          tr
+            td.panel-padding
+              | Paragraphs
+            td.panel-padding
+              p Of on affixed civilly moments promise explain fertile in. Assurance advantage belonging happiness departure so of. Now improving and one sincerity intention allowance commanded not. Oh an am frankness be necessary earnestly advantage estimable extensive. Five he wife gone ye. Mrs suffering sportsmen earnestly any. In am do giving to afford parish settle easily garret.
+          tr
+            td.panel-padding
+              | Text Classes
+            td.panel-padding
+              p.text-default Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh
+              p.text-muted Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh
+              p.text-light-grey Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh
+              p.text-primary Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh
+              p.text-success Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh
+              p.text-info Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh
+              p.text-warning Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh
+              p.text-danger Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh
+          tr
+            td.panel-padding
+              | Text Alignment
+            td.panel-padding
+              p.text-left Left Aligned Test
+              p.text-center Center Aligned Test
+              p.text-right Right Aligned Test
+          tr
+            td.panel-padding
+              | Horizontal Rule
+            td.panel-padding
+              hr
+              | Horizontal rule markup as <code>&lt;hr /&gt;</code> will create the above line.
+
+    = leaf-panel simple-header=true title='Wells'
+      .panel-body
+        .well
+          | I'm a well
+        .well.well-sm
+          | I'm a small well
+        .well.well-lg
+          | I'm a large well

@@ -1,0 +1,7 @@
+span.panel-title
+  = title
+.panel-heading-controls style=controls-style
+  = yield
+  = if icon
+    .panel-heading-icon
+      i class=icon

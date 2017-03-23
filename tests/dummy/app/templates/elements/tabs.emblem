@@ -1,0 +1,134 @@
+.row
+  .col-md-6
+    = leaf-panel simple-header=true title='Tabs' icon='fa fa-leaf'
+      .panel-body
+        = leaf-tabs-control selected-idx=sel1 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl idx=1
+            = leaf-label content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl idx=2
+            = leaf-badge type='info' content=47
+
+        = leaf-navs-content selected-idx=sel1 bordered=true as |content|
+          = leaf-navs-panel parent=content idx=1
+            h6 Tab 1
+            p Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+          = leaf-navs-panel parent=content idx=2
+            h6 Tab 2
+            p Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+
+    = leaf-panel simple-header=true title='Simple Tabs' icon='fa fa-leaf'
+      .panel-body
+        = leaf-tabs-control class='nav-tabs-simple' selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='success' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+            = leaf-badge type='danger' content=47
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control simple=true size='sm' selected-idx=sel2  as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='warning' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control simple=true size='xs' selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='success' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+
+  .col-md-6
+    = leaf-panel simple-header=true title='Tab Sizes' icon='fa fa-flask'
+      .panel-body
+        = leaf-tabs-control selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='success' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control size='sm' selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='danger' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control size='xs' selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+
+    = leaf-panel simple-header=true title='Justified Tabs' icon='fa fa-flask'
+      .panel-body
+        = leaf-tabs-control justified=true selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='success' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control justified=true size='sm' selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='success' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control justified=true size='xs' selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control justified=true simple=true selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='success' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control justified=true simple=true size='sm' selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+            = leaf-label type='info' content=12
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+        hr
+        = leaf-tabs-control justified=true simple=true size='xs' selected-idx=sel2 as |ctrl|
+          = leaf-tab title='Home' icon='fa fa-home' parent=ctrl
+          = leaf-tab title='Profile' icon='fa fa-user' parent=ctrl
+          = leaf-tab title='Dropdown' parent=ctrl
+
+.row
+  .col-md-6
+    = leaf-panel simple-header=true title='Pills' icon='fa fa-leaf'
+      .panel-body
+        = leaf-pills-control selected-idx=selp1 as |ctrl|
+           = leaf-pill title='Home' icon='fa fa-home' parent=ctrl
+             = leaf-label content=selp1
+           = leaf-pill title='Profile' icon='fa fa-user' parent=ctrl
+             = leaf-badge type='info' content=47
+           = leaf-pill title='Dropdown' parent=ctrl
+
+    = leaf-panel simple-header=true title='Justified Pills' icon='fa fa-leaf'
+      .panel-body
+        = leaf-pills-control selected-idx=selp2 justified=true as |ctrl|
+           = leaf-pill title='Home' icon='fa fa-home' parent=ctrl
+             = leaf-label content=selp2
+           = leaf-pill title='Profile' icon='fa fa-user' parent=ctrl
+             = leaf-badge type='info' content=47
+           = leaf-pill title='Dropdown' parent=ctrl
+
+
+  .col-md-6
+    = leaf-panel simple-header=true title='Stacked Pills' icon='fa fa-leaf'
+      .panel-body
+        = leaf-pills-control selected-idx=selp3 stacked=true as |ctrl|
+          = leaf-pill title='Home' icon='fa fa-home' parent=ctrl idx=1
+            .pull-right
+              = leaf-label content=selp3 type='danger'
+          = leaf-pill title='Profile' icon='fa fa-user' parent=ctrl idx=2
+            .pull-right
+              = leaf-badge type='info' content=47
+          = leaf-pill title='Dropdown' parent=ctrl idx=3
+        = leaf-navs-content selected-idx=selp3 bordered=false as |content|
+           = leaf-navs-panel parent=content idx=1
+             h6 Tab 1
+             p Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+           = leaf-navs-panel parent=content idx=2
+             h6 Tab 2
+             p Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.

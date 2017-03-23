@@ -1,0 +1,50 @@
+@import 'leaf-bootstrap';
+@import 'leaf';
+@import 'leaf-themes';
+
+@import 'plugins';
+
+// patches to port back to *-theme
+
+.modal-backdrop {
+  position: fixed;
+  bottom: 0;
+}
+
+.modal-dialog {
+  z-index: 1050;
+}
+
+.raised {
+  z-index: 10;
+}
+
+.panel-heading {
+  min-height: 40px;
+}
+
+
+.spaced {
+  padding: 5px;
+  display: inline-block;
+}
+
+
+.btn.btn-labeled .btn-label {
+  min-width: 35px;
+}
+
+.modal-bottom {
+  .modal-dialog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+
+.popover.large {
+  max-width: none;
+  min-width: 330px;
+}

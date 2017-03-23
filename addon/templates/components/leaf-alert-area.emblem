@@ -1,0 +1,9 @@
+= if singleAlert
+  = hr
+  = liquid-if topAlert class='ll-down-up'
+    = liquid-bind topAlert use='fade' as | alert |
+      = leaf-alert message=alert.message dismiss=alert.dismiss type=alert.type dark=dark dismiss-after=dismiss-after alertArea=this alertAreaAlert=alert alert-dismissed='closedAlert' animated=false
+= else
+  = each displayedAlerts as | alert |
+    = leaf-alert message=alert.message dismiss=alert.dismiss type=alert.type dark=dark dismiss-after=dismiss-after alertArea=this alertAreaAlert=alert alert-dismissed='closedAlert'
+= yield this

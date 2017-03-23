@@ -1,0 +1,9 @@
+section class={:toast typeClass animationClass}
+  i.toast-icon class=icon
+  span.toast-message
+    == message.message
+  = unless sticky
+    button.close click='closeToast'
+      i.fa.fa-times-circle-o
+      span.hidden
+        |Close
