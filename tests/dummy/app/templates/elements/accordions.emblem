@@ -2,12 +2,32 @@
   .col-md-6
     = leaf-panel simple-header=true title='Accordion' icon='fa fa-leaf'
       .panel-body
-        = leaf-accordion selected-idx=1 as |chord|
+        = leaf-accordion as |chord|
           = leaf-accordion-panel title='panel 1' icon='fa fa-cog' simple-header=true parent=chord
             p Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
           = leaf-accordion-panel title='panel 2' icon='fa fa-home' simple-header=true parent=chord
             p Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
           = leaf-accordion-panel title='panel 3' icon='fa fa-user' simple-header=true parent=chord
+            p Hello!
+
+    = leaf-panel simple-header=true title='Accordion pre-selected' icon='fa fa-leaf'
+      .panel-body
+        = leaf-accordion selected-idx='1' as |chord|
+          = leaf-accordion-panel title='panel 1' idx='1' icon='fa fa-cog' simple-header=true parent=chord
+            p Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
+          = leaf-accordion-panel title='panel 2' idx='2' icon='fa fa-home' simple-header=true parent=chord
+            p Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          = leaf-accordion-panel title='panel 3' idx='3' icon='fa fa-user' simple-header=true parent=chord
+            p Hello!
+
+    = leaf-panel simple-header=true title='Accordion disable full close' icon='fa fa-leaf'
+      .panel-body
+        = leaf-accordion allow-close=false as |chord|
+          = leaf-accordion-panel title='panel 1' idx='1' icon='fa fa-cog' simple-header=true parent=chord
+            p Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
+          = leaf-accordion-panel title='panel 2' idx='2' icon='fa fa-home' simple-header=true parent=chord
+            p Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          = leaf-accordion-panel title='panel 3' idx='3' icon='fa fa-user' simple-header=true parent=chord
             p Hello!
 
   .col-md-6

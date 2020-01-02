@@ -1,6 +1,7 @@
-`import Ember from 'ember'`
+import Component from '@ember/component'
 
-LeafModalFooterComponent = Ember.Component.extend(
+
+ModalFooter = Component.extend(
 
   classNames: ['modal-footer']
 
@@ -33,4 +34,4 @@ LeafModalFooterComponent = Ember.Component.extend(
 
 )
 
-`export default LeafModalFooterComponent`
+export default ModalFooter

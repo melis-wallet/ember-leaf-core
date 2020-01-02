@@ -1,7 +1,11 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { alias } from '@ember/object/computed'
+import { once } from '@ember/runloop'
+
+import Logger from 'ember-leaf-core/utils/logger'
 
 
-HasParent = Ember.Mixin.create(
+HasParent = Mixin.create(
 
   #
   #
@@ -22,7 +26,7 @@ HasParent = Ember.Mixin.create(
   #
   #
   #
-  siblings: Ember.computed.alias('parent.children')
+  siblings: alias('parent.children')
 
 
   #
@@ -32,11 +36,11 @@ HasParent = Ember.Mixin.create(
   # @type Boolean
   #
   selected: (->
-    @get('parent.selected') == this
+    @get('parent')?.isSelected(this)
   ).property('parent.selected')
 
   #
-  # The index of this tab in the `ivy-tab-list` component.
+  # The index of this tab in the `tab-list` component.
   #
   # @property index
   # @type Number
@@ -51,15 +55,30 @@ HasParent = Ember.Mixin.create(
   #
   #
   select: ->
-    if @get('selectable')
-      @get('parent').selectChild(this)
+    @get('parent')?.selectChild(this) if @get('selectable')
 
+
+  #
+  #
+  #
+  unselect:  ->
+    @get('parent')?.unselect()
+
+
+  #
+  #
+  #
+  toggleSelect: ->
+    if @get('selected')
+      @unselect()
+    else
+      @select()
 
   #
   #
   #
   setup: (->
-    Ember.run.once(this, @_registerWithParent)
+    once(this, @_registerWithParent)
   ).on('init')
 
 
@@ -67,19 +86,23 @@ HasParent = Ember.Mixin.create(
   #
   #
   teardown: (->
-    Ember.run.once(this, @_unregisterWithParent)
+    once(this, @_unregisterWithParent)
   ).on('willDestroyElement')
 
 
   _registerWithParent: ->
     if parent = @get('parent')
-      parent.registerChild(this)
-    else if @mandatoryParent
-      Ember.Logger.error "Missing mandatory parent. This subcomponent needs one."
 
-    if !@get('idx') && @mandatoryParent
-      Ember.Logger.debug('Children need an unique identifier idx, getting the elementId.')
-      @set('idx', @get('elementId'))
+      if !@get('idx')
+        Logger.debug('Children need an unique identifier idx, getting the elementId.')
+        @set('idx', @get('elementId'))
+
+      parent.registerChild(this)
+
+
+    else if @mandatoryParent
+      Logger.error "Missing mandatory parent. This subcomponent needs one."
+
 
 
   _unregisterWithParent: ->
@@ -88,4 +111,4 @@ HasParent = Ember.Mixin.create(
 
 )
 
-`export default HasParent`
+export default HasParent

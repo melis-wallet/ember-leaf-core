@@ -1,41 +1,59 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { isBlank } from '@ember/utils'
 
 
-HasSelectableChildren = Ember.Mixin.create(
+HasSelectableChildren = Mixin.create(
 
 
   #
   # The selected child identifier
   #
-  # @property 'selected-ids'
+  # @property 'selected-idx'
   # @type String
   #
   'selected-idx': null
 
-  #
-  # The the selected child instance
-  #
-  # @property 'selected'
-  # @type Object
-  #
-  selected: null
+
 
   #
   #
   #
-  onRegister: ( (child)->
-    # select the first
-    unless @get('selected')
-      @set('selected', child)
-      @set('selected-idx', child.get('idx'))
+  'allow-unselect': false
+
+  #
+  #
+  #
+  selected: ( ->
+    if (idx = @get('selected-idx'))
+      @get('children').findBy('idx', idx)
+
+  ).property('selected-idx', 'children.[]')
+
+
+
+  #
+  #
+  #
+  isSelected: (child) ->
+    (@get('selected') == child)
+
+  #
+  #
+  #
+  onRegister: ((child)->
+    if (isBlank(@get('selected-idx')) && !@get('allow-unselect') && (f = @get('children.firstObject')))
+      @selectChild(f)
   ).on('childRegistered')
 
   #
   #
   #
   onUnregister: ( (child)->
-    if child.get('isSelected')
-      @selectPreviousChild(child)
+    if @isSelected(child)
+      if @get('allow-unselect')
+        @unselect()
+      else
+        @selectPreviousChild(child)
   ).on('childUnregistered')
 
 
@@ -47,7 +65,7 @@ HasSelectableChildren = Ember.Mixin.create(
     childpos = @get('children').indexOf child
     nextpos = (childpos == 0) ? childpos : childpos - 1
     if obj = @get('children').objectAt(nextpos)
-      @select(obj)
+      @selectChild(obj)
 
   #
   #
@@ -57,7 +75,7 @@ HasSelectableChildren = Ember.Mixin.create(
     childpos = @get('children').indexOf child
     nextpos = (childpos == 0) ? childpos : childpos + 1
     if obj = @get('children').objectAt(nextpos)
-      @select(obj)
+      @selectChild(obj)
 
   #
   # Select the given child.
@@ -68,26 +86,32 @@ HasSelectableChildren = Ember.Mixin.create(
   # @see selected-idx
   #
   selectChild: (child) ->
-    #TODO: Why we initially having an undefined tab?
-    # return if not tab
-    @set 'selected', child
-    @set 'selected-idx', child.get 'idx'
+    @set('selected-idx', i) if (i = child.get('idx'))
+
+  #
+  #
+  #
+  unselect: ->
+    return unless @get('allow-unselect')
+    @set('selected-idx', null)
 
 
   #
   # get one child by idx then select it
   #
   selectByIdx: (idx) ->
-    child = @get('children').findBy('idx', idx)
-    selectChild(child) if child
+    if (child = @get('children').findBy('idx', idx))
+      @selectChild(child)
+    else
+      false
 
   #
   #
   #
-  idxChanged: (->
-    if current = @get('children').findBy('idx', @get('selected-idx'))
-      @selectChild(current)
-  ).observes('selected-idx', 'children.[]')
+  #idxChanged: (->
+  #  if current = @get('children').findBy('idx', @get('selected-idx'))
+  #    @selectChild(current)
+  #).observes('selected-idx', 'children.[]')
 )
 
-`export default HasSelectableChildren`
+export default HasSelectableChildren

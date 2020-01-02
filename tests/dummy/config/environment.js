@@ -1,9 +1,9 @@
-/* jshint node: true */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'dummy',
-    environment: environment,
+    environment,
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -23,6 +23,16 @@ module.exports = function(environment) {
     }
   };
 
+
+  ENV.contentSecurityPolicy = {
+     'default-src': "'none'",
+     'script-src': "'self'",
+     'font-src': "'self' data: https://fonts.gstatic.com", // Allow fonts to be loaded from http://fonts.gstatic.com
+     'img-src': "'self' 'unsafe-inline' data:",
+     'style-src': "'self' 'unsafe-inline' ", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
+     'media-src': "'self'"
+   };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -40,6 +50,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
   }
 
   if (environment === 'production') {

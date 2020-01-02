@@ -1,2 +1,2 @@
-`import LeafModalAlertComponent from 'ember-leaf-core/components/leaf-modal-alert'`
-`export default LeafModalAlertComponent`
+import ModalAlert from 'ember-leaf-core/components/leaf-modal-alert'
+export default ModalAlert

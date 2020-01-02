@@ -1,2 +1,2 @@
-`import LeafLabelComponent from 'ember-leaf-core/components/leaf-label'`
-`export default LeafLabelComponent`
+import LabelComponent from 'ember-leaf-core/components/leaf-label'
+export default LabelComponent

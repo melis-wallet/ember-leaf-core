@@ -1,2 +1,2 @@
-`import LeafAlertAreaComponent from 'ember-leaf-core/components/leaf-alert-area'`
-`export default LeafAlertAreaComponent`
+import AlertArea from 'ember-leaf-core/components/leaf-alert-area'
+export default AlertArea

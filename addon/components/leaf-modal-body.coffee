@@ -1,9 +1,9 @@
-`import Ember from 'ember'`
+import Component from '@ember/component'
 
-LeafModalBodyComponent = Ember.Component.extend(
+ModalBody = Component.extend(
 
   classNames: ['modal-body']
 
 )
 
-`export default LeafModalBodyComponent`
+export default ModalBody

@@ -1,18 +1,22 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { bind, debounce } from '@ember/runloop'
+import { computed } from '@ember/object'
+import { guidFor } from '@ember/object/internals'
 
 
-ResizeHandler = Ember.Mixin.create(
+ResizeHandler = Mixin.create(
 
   # Time in ms to debounce before triggering resizeEnd
   resizeEndDelay: 500
   resizing: false
 
+  ## FIXME remove these
   onResizeStart:  Ember.K
   onResizeEnd:    Ember.K
   onResize:       Ember.K
 
   # A resize handler that binds handleWindowResize to this view
-  resizeHandler: Ember.computed ->
+  resizeHandler: computed ->
     jQuery.proxy(@handleWindowResize, @)
 
 
@@ -26,19 +30,19 @@ ResizeHandler = Ember.Mixin.create(
       @set('resizing', true)
       @onResizeStart?(event)
     @onResize?(event)
-    Ember.run.debounce(this, @debounceEnd, @resizeEndDelay)
+    debounce(this, @debounceEnd, @resizeEndDelay)
   )
 
   addResizeHandler: (->
-    $(window).on('resize.' + Ember.guidFor(@), Ember.run.bind(this, @get('resizeHandler')))
-#    $(window).off 'resize.' + Ember.guidFor(@), @get("resizeHandler")
+    $(window).on('resize.' + guidFor(@), bind(this, @get('resizeHandler')))
+#    $(window).off 'resize.' + guidFor(@), @get("resizeHandler")
   ).on('didInsertElement')
 
   removeResizeHandler: (->
-    $(window).off('resize.' + Ember.guidFor(@), Ember.run.bind(this, @get('resizeHandler')))
-#    $(window).off 'resize.' + Ember.guidFor(@), @get("resizeHandler")
+    $(window).off('resize.' + guidFor(@), bind(this, @get('resizeHandler')))
+#    $(window).off 'resize.' + guidFor(@), @get("resizeHandler")
   ).on('willDestroyElement')
 )
 
-`export default ResizeHandler`
+export default ResizeHandler
 

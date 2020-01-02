@@ -1,2 +1,2 @@
-`import LeafListItemComponent from 'ember-leaf-core/components/leaf-list-item'`
-`export default LeafListItemComponent`
+import ListItem from 'ember-leaf-core/components/leaf-list-item'
+export default ListItem

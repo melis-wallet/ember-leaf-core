@@ -1,9 +1,11 @@
-`import Ember from 'ember'`
-`import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'`
-`import SimpleAnimations from 'ember-leaf-core/mixins/leaf-simple-animations'`
-`import layout from 'ember-leaf-core/templates/components/leaf-alert'`
+import Component from '@ember/component'
+import { later, cancel } from '@ember/runloop'
 
-LeafAlertComponent = Ember.Component.extend(TypeSupport, SimpleAnimations,
+import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'
+import SimpleAnimations from 'ember-leaf-core/mixins/leaf-simple-animations'
+import layout from 'ember-leaf-core/templates/components/leaf-alert'
+
+AlertComponent = Component.extend(TypeSupport, SimpleAnimations,
   layout: layout
 
   classNames: ['alert'],
@@ -43,7 +45,7 @@ LeafAlertComponent = Ember.Component.extend(TypeSupport, SimpleAnimations,
 
   setup: (->
     if delay = @get('dismiss-after')
-      @set 'persistTimer', Ember.run.later(this, (=>
+      @set 'persistTimer', later(this, (=>
         @set 'persistTimer', null
         @dismissAlert();
       ), (delay * 1000))
@@ -52,7 +54,7 @@ LeafAlertComponent = Ember.Component.extend(TypeSupport, SimpleAnimations,
 
   cancelTimer: (->
     if timer = @get 'persistTimer'
-      Ember.run.cancel(timer)
+      cancel(timer)
       @set 'persistTimer', null
   ).on('willDestroyElement')
 
@@ -60,7 +62,7 @@ LeafAlertComponent = Ember.Component.extend(TypeSupport, SimpleAnimations,
   dismissAlert: ->
 
     if timer = @get 'persistTimer'
-      Ember.run.cancel(timer)
+      cancel(timer)
       @set 'persistTimer', null
 
     if @get('animated')
@@ -74,4 +76,5 @@ LeafAlertComponent = Ember.Component.extend(TypeSupport, SimpleAnimations,
     else
       @set('closed', true) unless @get('isDestroyed')
 )
-`export default LeafAlertComponent`
+
+export default AlertComponent

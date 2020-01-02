@@ -1,10 +1,12 @@
-`import Ember from 'ember'`
-`import HasChildren from 'ember-leaf-core/mixins/leaf-has-children'`
-`import HasSelectableChildren from 'ember-leaf-core/mixins/leaf-has-selectable-children'`
-`import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-pills-control'`
+import Component from '@ember/component'
+import { scheduleOnce } from '@ember/runloop'
 
-LeafPillsControlComponent = Ember.Component.extend(HasChildren, HasSelectableChildren, SizeSupport,
+import HasChildren from 'ember-leaf-core/mixins/leaf-has-children'
+import HasSelectableChildren from 'ember-leaf-core/mixins/leaf-has-selectable-children'
+import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'
+import layout from 'ember-leaf-core/templates/components/leaf-pills-control'
+
+PillsControl = Component.extend(HasChildren, HasSelectableChildren, SizeSupport,
   layout: layout
 
   tagName: 'ul'
@@ -54,9 +56,9 @@ LeafPillsControlComponent = Ember.Component.extend(HasChildren, HasSelectableChi
       when 39, 40 then @selectNextChild()
 
     event.preventDefault()
-    Ember.run.scheduleOnce('afterRender', this, @focusSelectedTab);
+    scheduleOnce('afterRender', this, @focusSelectedTab);
   ).on('keyDown')
 
 )
 
-`export default LeafPillsControlComponent`
+export default PillsControl

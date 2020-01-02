@@ -1,9 +1,9 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { inject as service } from '@ember/service'
 
+ModalAlerts = Mixin.create(
 
-ModalAlerts = Ember.Mixin.create(
-
-  modalManager: Ember.inject.service('leaf-modals-manager')
+  modalManager: service('leaf-modals-manager')
 
   showModalAlert: (data) ->
     @get('modalManager').showAlert(data)
@@ -11,4 +11,4 @@ ModalAlerts = Ember.Mixin.create(
 
 )
 
-`export default ModalAlerts`
+export default ModalAlerts

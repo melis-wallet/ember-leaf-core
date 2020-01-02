@@ -1,2 +1,2 @@
-`import LeafNavsPanelComponent from 'ember-leaf-core/components/leaf-navs-panel'`
-`export default LeafNavsPanelComponent`
+import NavsPanel from 'ember-leaf-core/components/leaf-navs-panel'
+export default NavsPanel

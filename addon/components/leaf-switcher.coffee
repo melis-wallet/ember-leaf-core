@@ -1,14 +1,15 @@
-`import Ember from 'ember'`
-`import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'`
-`import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-switcher'`
+import Component from '@ember/component'
 
-LeafSwitcherComponent = Ember.Component.extend(TypeSupport, SizeSupport,
+import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'
+import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'
+import layout from 'ember-leaf-core/templates/components/leaf-switcher'
+
+SwitcherComponent = Component.extend(TypeSupport, SizeSupport,
   layout: layout
 
   checked: false
   disabled: false
-  target: null
+  item: null
 
   theme: 'classic'
 
@@ -31,7 +32,7 @@ LeafSwitcherComponent = Ember.Component.extend(TypeSupport, SizeSupport,
   click: ->
     return if @get('disabled')
     if @get('on-toggle')
-      @sendAction('on-toggle', !@get('checked'), @get('target'))
+      @sendAction('on-toggle', !@get('checked'), @get('item'))
     else
       @toggle()
     false
@@ -42,4 +43,4 @@ LeafSwitcherComponent = Ember.Component.extend(TypeSupport, SizeSupport,
 
 )
 
-`export default LeafSwitcherComponent`
+export default SwitcherComponent

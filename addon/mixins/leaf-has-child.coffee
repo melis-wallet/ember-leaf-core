@@ -1,9 +1,6 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
 
 
-HasChild = Ember.Mixin.create(
+HasChild = Mixin.create()
 
-
-)
-
-`export default HasChild`
+export default HasChild

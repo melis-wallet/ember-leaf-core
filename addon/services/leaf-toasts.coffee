@@ -1,20 +1,25 @@
-`import Ember from 'ember'`
+import Service from '@ember/service'
+import { A } from '@ember/array'
+import { filterBy, alias } from '@ember/object/computed'
+import { get, set } from '@ember/object'
 
-Toasts = Ember.Service.extend(
+import Logger from 'ember-leaf-core/utils/logger'
 
-  delayedToasts: Ember.A()
-  toasts: Ember.A()
+Toasts = Service.extend(
 
-  visibleToasts: Ember.computed.alias('toasts')
+  delayedToasts: A()
+  toasts: A()
+
+  visibleToasts: alias('toasts')
 
   queueToast: (message) ->
 
     message.location ||= 'bottom'
     message.status   ||= 'passive'
 
-    Ember.Logger.debug "+ Toast: ", message
+    Logger.debug "+ Toast: ", message
 
-    if Ember.get(message, 'delayed')
+    if get(message, 'delayed')
       @delayedToasts.pushObject(message)
     else
       @toasts.pushObject(message)
@@ -107,7 +112,7 @@ Toasts = Ember.Service.extend(
   displayDelayed: ->
     @get('delayedToasts').forEach((message) =>
       @queueToast(message))
-    @set('delayedToasts', Ember.A())
+    @set('delayedToasts', A())
 
 
   closeToast: (toast) ->
@@ -124,4 +129,4 @@ Toasts = Ember.Service.extend(
 
 )
 
-`export default Toasts`
+export default Toasts

@@ -1,9 +1,11 @@
-`import Ember from 'ember'`
-`import HasParent from 'ember-leaf-core/mixins/leaf-has-parent'`
-`import layout from 'ember-leaf-core/templates/components/leaf-tab'`
+import Component from '@ember/component'
+import { alias } from '@ember/object/computed'
+
+import HasParent from 'ember-leaf-core/mixins/leaf-has-parent'
+import layout from 'ember-leaf-core/templates/components/leaf-tab'
 
 
-LeafTabComponent = Ember.Component.extend(HasParent,
+TabComponent = Component.extend(HasParent,
   layout: layout
 
   tagName: 'li'
@@ -26,7 +28,7 @@ LeafTabComponent = Ember.Component.extend(HasParent,
   # @property aria-controls
   # @type String
   # @readOnly
-  'aria-controls': Ember.computed.alias('parent.elementId')
+  'aria-controls': alias('parent.elementId')
 
 
   # Tells screenreaders whether or not this tab's panel is expanded.
@@ -36,7 +38,7 @@ LeafTabComponent = Ember.Component.extend(HasParent,
   # @property aria-expanded
   # @type String
   # @readOnly
-  'aria-expanded': Ember.computed.alias('aria-selected')
+  'aria-expanded': alias('aria-selected')
 
   # Tells screenreaders whether or not this tab is selected.
   #
@@ -45,7 +47,7 @@ LeafTabComponent = Ember.Component.extend(HasParent,
   # @property aria-selected
   # @type String
   #
-  'aria-selected': Ember.computed.alias('selected')
+  'aria-selected': alias('selected')
 
   #
   #
@@ -55,12 +57,12 @@ LeafTabComponent = Ember.Component.extend(HasParent,
   #
   #
   #
-  'tabindex': Ember.computed.alias('indexAsChild')
+  'tabindex': alias('indexAsChild')
 
   #
   # true if this nav is active/selected
   #
-  active: Ember.computed.alias('selected')
+  active: alias('selected')
 
   #
   #
@@ -71,4 +73,4 @@ LeafTabComponent = Ember.Component.extend(HasParent,
 
 )
 
-`export default LeafTabComponent`
+export default TabComponent

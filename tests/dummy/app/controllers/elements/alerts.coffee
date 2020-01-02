@@ -1,7 +1,8 @@
-`import Ember from 'ember'`
-`import LeafAlertable from 'ember-leaf-core/mixins/leaf-alertable'`
+import Controller from '@ember/controller'
 
-AlertsController = Ember.Controller.extend(LeafAlertable,
+import LeafAlertable from 'ember-leaf-core/mixins/leaf-alertable'
+
+AlertsController = Controller.extend(LeafAlertable,
   alTypes: ['info', 'success', 'warning', 'danger']
 
   alerts: []
@@ -26,4 +27,5 @@ AlertsController = Ember.Controller.extend(LeafAlertable,
       )
 
 )
-`export default AlertsController`
+
+export default AlertsController

@@ -1,8 +1,9 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
 
-ListsController = Ember.Controller.extend(
+ListsController = Controller.extend(
   nTypes: ['default',  'info', 'success', 'warning', 'danger']
 
 
 )
-`export default ListsController`
+
+export default ListsController

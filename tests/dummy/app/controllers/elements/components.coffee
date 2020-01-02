@@ -1,8 +1,9 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
 
-ComponentsController = Ember.Controller.extend(
+ComponentsController = Controller.extend(
   ccTypes: ['default', 'primary', 'info', 'success', 'warning', 'danger']
   sizes: ['lg', 'sm', 'xs']
   themes: ['square', 'modern']
 )
-`export default ComponentsController`
+
+export default ComponentsController

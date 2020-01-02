@@ -1,23 +1,24 @@
-`import Ember from 'ember'`
+import Route from '@ember/routing/route'
+import EmberObject from '@ember/object'
 
-ElementsRoute = Ember.Route.extend(
+ElementsRoute = Route.extend(
   model: () ->
     [
-      Ember.Object.create({title: "Typography", route: "elements.typography"})
-      Ember.Object.create({title: "Button", route: "elements.button"})
-      Ember.Object.create({title: "Dropdowns", route: "elements.dropdowns"})
-      Ember.Object.create({title: "Alerts", route: "elements.alerts"})
-      Ember.Object.create({title: "Components", route: "elements.components"})
-      Ember.Object.create({title: "Lists and Notes", route: "elements.lists"})
-      Ember.Object.create({title: "Modals", route: "elements.modals"})
-      Ember.Object.create({title: "Tabs", route: "elements.tabs"})
-      Ember.Object.create({title: "Toasts", route: "elements.toasts"})
-      Ember.Object.create({title: "Tooltips and Popovers", route: "elements.tooltips"})
-      Ember.Object.create({title: "Accordions", route: "elements.accordions"})
-      Ember.Object.create({title: "Panel", route: "elements.panel"})
-      Ember.Object.create({title: "Wizards", route: "elements.wizards"})
+      EmberObject.create({title: "Typography", route: "elements.typography"})
+      EmberObject.create({title: "Button", route: "elements.button"})
+      EmberObject.create({title: "Dropdowns", route: "elements.dropdowns"})
+      EmberObject.create({title: "Alerts", route: "elements.alerts"})
+      EmberObject.create({title: "Components", route: "elements.components"})
+      EmberObject.create({title: "Lists and Notes", route: "elements.lists"})
+      EmberObject.create({title: "Modals", route: "elements.modals"})
+      EmberObject.create({title: "Tabs", route: "elements.tabs"})
+      EmberObject.create({title: "Toasts", route: "elements.toasts"})
+      EmberObject.create({title: "Tooltips and Popovers", route: "elements.tooltips"})
+      EmberObject.create({title: "Accordions", route: "elements.accordions"})
+      EmberObject.create({title: "Panel", route: "elements.panel"})
+      EmberObject.create({title: "Wizards", route: "elements.wizards"})
 
     ])
 
 
-`export default ElementsRoute`
+export default ElementsRoute

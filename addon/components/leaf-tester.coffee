@@ -1,8 +1,6 @@
-`import Ember from 'ember'`
-`import ResizeHandler from 'ember-leaf-core/mixins/leaf-resize-handler'`
+import Component from '@ember/component'
+import ResizeHandler from 'ember-leaf-core/mixins/leaf-resize-handler'
 
-LeafTesterComponent = Ember.Component.extend(ResizeHandler,
+TesterComponent = Ember.Component.extend(ResizeHandler)
 
-)
-
-`export default LeafTesterComponent`
+export default TesterComponent

@@ -1,6 +1,6 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
 
-SizeSupport = Ember.Mixin.create(
+SizeSupport = Mixin.create(
     classTypePrefix: null
     classNameBindings: ['sizeClass', 'largeSizeClass', 'smallSizeClass', 'extraSmallSizeClass']
 
@@ -36,4 +36,4 @@ SizeSupport = Ember.Mixin.create(
     ).property('size')
 )
 
-`export default SizeSupport`
+export default SizeSupport

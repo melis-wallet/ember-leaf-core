@@ -1,2 +1,2 @@
-`import LeafSwitcherComponent from 'ember-leaf-core/components/leaf-switcher'`
-`export default LeafSwitcherComponent`
+import SwitcherComponent from 'ember-leaf-core/components/leaf-switcher'
+export default SwitcherComponent

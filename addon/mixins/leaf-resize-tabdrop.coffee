@@ -1,15 +1,16 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { scheduleOnce } from '@ember/runloop'
 
-
-ResizeTabdrop = Ember.Mixin.create(
+ResizeTabdrop = Mixin.create(
 
   setTabDrop: (->
     if @get('tabdrop')
-      Ember.run.scheduleOnce 'afterRender', this, @_setTabDrop
+      scheduleOnce 'afterRender', this, @_setTabDrop
   ).on('didInsertElement')
 
   _setTabDrop: ->
     @.$().tabdrop(text: '<i class="fa fa-align-justify"></i>')
 )
-`export default ResizeTabdrop`
+
+export default ResizeTabdrop
 

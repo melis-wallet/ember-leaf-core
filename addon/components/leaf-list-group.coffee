@@ -1,7 +1,11 @@
-`import Ember from 'ember'`
-`import layout from 'ember-leaf-core/templates/components/leaf-list-group'`
+import Component from '@ember/component'
+import ArrayProxy from '@ember/array/proxy'
+import { next } from '@ember/runloop'
 
-LeafListGroupComponent = Ember.Component.extend(
+import layout from 'ember-leaf-core/templates/components/leaf-list-group'
+import Logger from 'ember-leaf-core/utils/logger'
+
+ListGroup = Component.extend(
   layout: layout
 
   tagName: 'ul'
@@ -45,7 +49,7 @@ LeafListGroupComponent = Ember.Component.extend(
   # @private
   #
   initItems: (->
-    @set 'items', Ember.ArrayProxy.create({content: []})
+    @set 'items', ArrayProxy.create({content: []})
   ).on 'init'
 
 
@@ -84,7 +88,7 @@ LeafListGroupComponent = Ember.Component.extend(
     else
       #TODO: Why we initially having an undefined item?
       return if not item or @get('selected') is item
-      Ember.debug "Selecting item: #{item.get('index')}"
+      Logger.debug "Selecting item: #{item.get('index')}"
       #the if condition is because the user may pass another object initially to bind the selected property
       @get('selected').sendAction 'on-deselect', @get('selected') if @get('selected')?.sendAction
       @set 'selected', item
@@ -97,7 +101,7 @@ LeafListGroupComponent = Ember.Component.extend(
       )
 
   notifyModelsChange: (->
-    Ember.run.next(this, ->
+    next(this, ->
       #Why this causes the models observer to stop notifying for changes?
       #@notifyPropertyChange 'models'
       @modelsDidChange()
@@ -114,4 +118,4 @@ LeafListGroupComponent = Ember.Component.extend(
   ).observes('models', 'models.[]')
 )
 
-`export default LeafListGroupComponent`
+export default ListGroup

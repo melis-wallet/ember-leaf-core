@@ -1,2 +1,2 @@
-`import LeafModalBodyComponent from 'ember-leaf-core/components/leaf-modal-body'`
-`export default LeafModalBodyComponent`
+import ModalBody from 'ember-leaf-core/components/leaf-modal-body'
+export default ModalBody

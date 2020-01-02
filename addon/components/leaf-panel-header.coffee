@@ -1,10 +1,11 @@
-`import Ember from 'ember'`
-`import layout from 'ember-leaf-core/templates/components/leaf-panel-header'`
+import Component from '@ember/component'
 
-LeafPanelHeaderComponent = Ember.Component.extend(
+import layout from 'ember-leaf-core/templates/components/leaf-panel-header'
+
+PanelHeader = Component.extend(
   layout: layout
 
   classNames: ['panel-heading']
 )
 
-`export default LeafPanelHeaderComponent`
+export default PanelHeader

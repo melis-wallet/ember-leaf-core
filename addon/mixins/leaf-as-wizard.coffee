@@ -1,7 +1,11 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { computed } from '@ember/object'
+import { A } from '@ember/array'
 
-AsWizard = Ember.Mixin.create(
-  completed: Ember.computed -> Ember.A()
+import Logger from 'ember-leaf-core/utils/logger'
+
+AsWizard = Mixin.create(
+  completed: computed -> A()
 
   completeOn: null
 
@@ -15,7 +19,7 @@ AsWizard = Ember.Mixin.create(
     @get('completed').removeObject(step)
 
   clearCompleted: ->
-    @set('completed', Ember.A())
+    @set('completed', A())
 
   isComplete: (step) ->
     @get('completed').includes(step)
@@ -26,7 +30,7 @@ AsWizard = Ember.Mixin.create(
 
   notifyComplete: (->
     if @get('wizardComplete')
-      Ember.Logger.debug "- wizardComplete"
+      Logger.debug "- wizardComplete"
       @sendAction('on-wizard-complete')
   ).observes('wizardComplete')
 
@@ -34,4 +38,4 @@ AsWizard = Ember.Mixin.create(
 
 )
 
-`export default AsWizard`
+export default AsWizard

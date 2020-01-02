@@ -1,8 +1,8 @@
-`import ModalComponent from 'ember-leaf-core/components/leaf-modal'`
-`import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-modal-alert'`
+import ModalComponent from 'ember-leaf-core/components/leaf-modal'
+import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'
+import layout from 'ember-leaf-core/templates/components/leaf-modal-alert'
 
-LeafModalAlertComponent = ModalComponent.extend(TypeSupport,
+ModalAlert = ModalComponent.extend(TypeSupport,
   layout: layout
 
 
@@ -36,4 +36,4 @@ LeafModalAlertComponent = ModalComponent.extend(TypeSupport,
 
 )
 
-`export default LeafModalAlertComponent`
+export default ModalAlert

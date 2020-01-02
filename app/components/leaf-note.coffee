@@ -1,2 +1,2 @@
-`import LeafNoteComponent from 'ember-leaf-core/components/leaf-note'`
-`export default LeafNoteComponent`
+import NoteComponent from 'ember-leaf-core/components/leaf-note'
+export default NoteComponent

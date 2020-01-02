@@ -1,32 +1,55 @@
-/* jshint node: true */
 'use strict';
 
-var fs   = require('fs'),
-    path = require('path')
+const fs   = require('fs'),
+      path = require('path'),
+      Funnel = require('broccoli-funnel'),
+      mergeTrees = require('broccoli-merge-trees'),
+      stew = require('broccoli-stew'),
+      rename = stew.rename,
+      map = stew.map;
+
 
 module.exports = {
   name: 'ember-leaf-core',
 
-  included: function( app, parentAddon ) {
-    var target = (parentAddon || app);
+  included( app, parentAddon ) {
+    let target = (parentAddon || app);
 
-    //var modulePath      = path.relative(app.project.root, __dirname);
-    //var componentsPath  = 'bower_components/'
+    let componentsPath = target.bowerDirectory;
 
-    var componentsPath = target.bowerDirectory;
-    var bootstrapPath  = path.join(componentsPath, 'bootstrap-sass-official/assets/');
+    target.import('vendor/tabdrop/bootstrap-tabdrop.css');
+    target.import('vendor/tabdrop/bootstrap-tabdrop.js');
+    target.import('vendor/balloon-css/balloon.min.css');
 
-    var bsJSPath = path.join(bootstrapPath, 'javascripts/');
+    // register library version
+    app.import('vendor/ember-leaf-core/register-version.js');
+  },
 
-    target.import(bsJSPath + 'bootstrap/tooltip.js');
-    target.import(bsJSPath + 'bootstrap/popover.js');
-    target.import(bsJSPath + 'bootstrap/dropdown.js');
-    // not sure we STILL need collapse.js check
-    target.import(bsJSPath + 'bootstrap/collapse.js');
-    target.import(bsJSPath + 'bootstrap/transition.js');
+  treeForVendor(vendorTree) {
+    let trees = [];
+
+    //console.error("VT: ",vendorTree);
+
+    if (vendorTree) {
+      trees.push(vendorTree);
+    }
 
 
-    target.import('vendor/tabdrop/bootstrap-tabdrop.css')
-    target.import('vendor/tabdrop/bootstrap-tabdrop.js')
+    let versionTree = rename(
+      map(vendorTree, 'ember-leaf-core/register-version.template', (c) => c.replace('###VERSION###', require('./package.json').version)),
+      'register-version.template',
+      'register-version.js'
+    );
+    trees.push(versionTree);
+
+    let cssPath = path.join(this.project.root, 'node_modules', 'balloon-css');
+
+    trees.push(new Funnel(cssPath, {
+      destDir: 'balloon-css',
+      files: ['balloon.min.css']
+    }));
+
+    //console.error("TREES: ", trees.length, trees);
+    return mergeTrees(trees, {overwrite: true}); /* BUG FIXME: why we need overwrite? */
   }
 };

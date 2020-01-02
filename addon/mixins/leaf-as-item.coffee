@@ -1,9 +1,10 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import Logger from 'ember-leaf-core/utils/logger'
 
 #
 # Indicate that the component is an item with a list.
 #
-AsItem = Ember.Mixin.create
+AsItem = Mixin.create
   attributeBindings: ['active', 'disabled']
   classNameBindings: ['selectedClass']
 
@@ -78,7 +79,7 @@ AsItem = Ember.Mixin.create
 
   setup: (->
     unless @get('list')
-      Ember.Logger.error "List item needs a list passed"
+      Logger.error "List item needs a list passed"
   ).on('init')
 
-`export default AsItem`
+export default AsItem

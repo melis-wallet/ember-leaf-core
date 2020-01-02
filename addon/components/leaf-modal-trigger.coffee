@@ -1,8 +1,11 @@
-`import Ember from 'ember'`
+import Component from '@ember/component'
+import { inject as service } from '@ember/service'
+import { scheduleOnce } from '@ember/runloop'
 
-LeafModalTriggerComponent = Ember.Component.extend(
 
-  mm: Ember.inject.service('leaf-modals-manager')
+ModalTrigger = Component.extend(
+
+  mm: service('leaf-modals-manager')
 
   'modal-id': null
   'when-inserted': false
@@ -37,11 +40,11 @@ LeafModalTriggerComponent = Ember.Component.extend(
     @get('modal-trigger')
     return unless @get('when-inserted')
     if modal = @get('modal-id')
-      Ember.run.scheduleOnce('afterRender', this, =>
+      scheduleOnce('afterRender', this, =>
         @showModal(modal)
       )
   ).on('didInsertElement')
 
 )
 
-`export default LeafModalTriggerComponent`
+export default ModalTrigger

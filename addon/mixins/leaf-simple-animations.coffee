@@ -1,6 +1,8 @@
-`import Ember from 'ember';`
+import Mixin from '@ember/object/mixin'
+import { scheduleOnce, later, cancel } from '@ember/runloop'
+import RSVP from 'rsvp'
 
-SimpleAnimations = Ember.Mixin.create(
+SimpleAnimations = Mixin.create(
 
   classNameBindings: ['animated', 'animation-quick:quick', 'modeAnimClass']
 
@@ -21,8 +23,8 @@ SimpleAnimations = Ember.Mixin.create(
   ).property('saState')
 
   waitAnimationEnd: ( ->
-    deferred = Ember.RSVP.defer()
-    Ember.run.scheduleOnce('afterRender', this, @_scheduleAnimation, deferred)
+    deferred = RSVP.defer()
+    scheduleOnce('afterRender', this, @_scheduleAnimation, deferred)
 
     return deferred.promise
   )
@@ -30,10 +32,10 @@ SimpleAnimations = Ember.Mixin.create(
   _scheduleAnimation: (deferred)->
     timer = null
     @.$().one('animationend webkitAnimationEnd oanimationend MSAnimationEnd', ->
-      Ember.run.cancel(timer) if timer
+      cancel(timer) if timer
       deferred.resolve('animation')
     )
-    timer = Ember.run.later(this, (->
+    timer = later(this, (->
         deferred.resolve('timeout')
       ), @get('saAnimGuard')
     )

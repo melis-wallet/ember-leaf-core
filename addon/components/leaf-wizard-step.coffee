@@ -1,8 +1,10 @@
-`import Ember from 'ember'`
-`import HasParent from 'ember-leaf-core/mixins/leaf-has-parent'`
-`import layout from 'ember-leaf-core/templates/components/leaf-wizard-step'`
+import Component from '@ember/component'
+import { alias } from '@ember/object/computed'
 
-LeafWizardStepComponent = Ember.Component.extend(HasParent,
+import HasParent from 'ember-leaf-core/mixins/leaf-has-parent'
+import layout from 'ember-leaf-core/templates/components/leaf-wizard-step'
+
+WizardStep = Component.extend(HasParent,
   layout: layout
 
   tagName: 'li'
@@ -18,7 +20,7 @@ LeafWizardStepComponent = Ember.Component.extend(HasParent,
   #
   # true if this nav is active/selected
   #
-  active: Ember.computed.alias('selected')
+  active: alias('selected')
 
   #
   #
@@ -35,4 +37,4 @@ LeafWizardStepComponent = Ember.Component.extend(HasParent,
 
 )
 
-`export default LeafWizardStepComponent`
+export default WizardStep

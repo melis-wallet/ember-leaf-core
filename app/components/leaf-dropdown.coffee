@@ -1,2 +1,2 @@
-`import LeafDropdownComponent from 'ember-leaf-core/components/leaf-dropdown'`
-`export default LeafDropdownComponent`
+import DropdownComponent from 'ember-bootstrap/components/bs-dropdown'
+export default DropdownComponent

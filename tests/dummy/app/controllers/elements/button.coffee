@@ -1,6 +1,7 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
+import { later } from '@ember/runloop'
 
-ButtonController = Ember.Controller.extend(
+ButtonController = Controller.extend(
   btnTypes: ['default', 'primary', 'info', 'success', 'warning', 'danger']
 
   count: 0
@@ -15,7 +16,7 @@ ButtonController = Ember.Controller.extend(
     #
     submitDelayed: (deferred, value) ->
 
-      Ember.run.later( (->
+      later( (->
         deferred.resolve('done')
       ), 2000)
       false
@@ -23,7 +24,7 @@ ButtonController = Ember.Controller.extend(
     #
     submitDelayedFail: (deferred, value) ->
 
-      Ember.run.later( (->
+      later( (->
         deferred.reject 'Error!'
       ), 2000)
       false
@@ -41,4 +42,5 @@ ButtonController = Ember.Controller.extend(
       false
 
 )
-`export default ButtonController`
+
+export default ButtonController

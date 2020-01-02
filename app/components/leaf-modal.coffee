@@ -1,2 +1,2 @@
-`import LeafModalComponent from 'ember-leaf-core/components/leaf-modal'`
-`export default LeafModalComponent`
+import ModalComponent from 'ember-leaf-core/components/leaf-modal'
+export default ModalComponent

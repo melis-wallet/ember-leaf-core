@@ -1,8 +1,9 @@
-`import Ember from 'ember'`
-`import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-note'`
+import Component from '@ember/component'
 
-LeafNoteComponent = Ember.Component.extend(TypeSupport,
+import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'
+import layout from 'ember-leaf-core/templates/components/leaf-note'
+
+NoteComponent = Component.extend(TypeSupport,
   layout: layout
 
   tagName: 'section'
@@ -11,4 +12,4 @@ LeafNoteComponent = Ember.Component.extend(TypeSupport,
   classTypePrefix: 'note'
 )
 
-`export default LeafNoteComponent`
+export default NoteComponent

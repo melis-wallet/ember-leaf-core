@@ -1,6 +1,6 @@
 section.jumbotron
   .container
-    h1 Hello World
+    h1.animated.bounceInDown Hello World
     p This is a kitchen sink of all the Wm Elements for Ember
     p
       = link-to 'elements' class='btn btn-primary'

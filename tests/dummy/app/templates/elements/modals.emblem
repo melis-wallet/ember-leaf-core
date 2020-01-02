@@ -1,4 +1,4 @@
-leaf-modal-alert id='global-alert'
+= leaf-modal-alert id='global-alert'
 .row
   .col-md-6
     = leaf-panel simple-header=true title='Modals' icon='fa fa-leaf'
@@ -58,3 +58,33 @@ leaf-modal-alert id='global-alert'
             = leaf-button label=modal type=modal icon='fa fa-check' on-click="simpleAlert" value=modal
 
 
+
+    = leaf-panel
+      = leaf-panel-header title='Multiple Modals'
+        = leaf-switcher checked=modalManager.exclusiveModals size='sm'
+      .panel-body
+
+        = leaf-button size='lg' label='multi open' type='primary' icon='fa fa-check' on-click='openMultiModal'
+
+        = leaf-modal id='test-mm-1' as |mod1|
+          = leaf-modal-header title='Modal 1' modal=mod1
+          = leaf-modal-body
+            p Hello World
+          = leaf-modal-footer modal=mod1
+            = leaf-modal-button icon='fa fa-check' type='primary' label='Ok' modal=mod1 value='ok'
+
+
+        = leaf-modal id='test-mm-2' as |mod2|
+          = leaf-modal-header title='Modal 2' modal=mod2
+          = leaf-modal-body
+            p Hello World
+          = leaf-modal-footer modal=mod2
+            = leaf-modal-button icon='fa fa-check' type='primary' label='Ok' modal=mod2 value='ok'
+
+
+        = leaf-modal id='test-mm-3' bottom=true as |mod3|
+          = leaf-modal-header title='Modal 3' modal=mod3
+          = leaf-modal-body
+            p Down here
+          = leaf-modal-footer modal=mod3
+            = leaf-modal-button icon='fa fa-check' type='primary' label='Ok' modal=mod3 value='ok'

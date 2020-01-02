@@ -1,2 +1,2 @@
-`import LeafPillComponent from 'ember-leaf-core/components/leaf-pill'`
-`export default LeafPillComponent`
+import PillComponent from 'ember-leaf-core/components/leaf-pill'
+export default PillComponent

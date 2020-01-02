@@ -1,8 +1,9 @@
-`import Ember from 'ember'`
-`import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-pagination'`
+import Component from '@ember/component'
 
-LeafPaginationComponent = Ember.Component.extend(SizeSupport,
+import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'
+import layout from 'ember-leaf-core/templates/components/leaf-pagination'
+
+PaginationComponent = Component.extend(SizeSupport,
   layout: layout
 
 
@@ -103,5 +104,5 @@ LeafPaginationComponent = Ember.Component.extend(SizeSupport,
         @decrementProperty('currentPage')
 )
 
-`export default LeafPaginationComponent`
+export default PaginationComponent
 

@@ -1,10 +1,14 @@
-`import Ember from 'ember'`
-`import HasChildren from 'ember-leaf-core/mixins/leaf-has-children'`
-`import HasSelectableChildren from 'ember-leaf-core/mixins/leaf-has-selectable-children'`
-`import ResizeHandler from 'ember-leaf-core/mixins/leaf-resize-handler'`
-`import layout from 'ember-leaf-core/templates/components/leaf-wizards-control'`
+import Component from '@ember/component'
+import { alias } from '@ember/object/computed'
+import { A } from '@ember/array'
+import { scheduleOnce, later } from '@ember/runloop'
 
-LeafWizardsControlComponent = Ember.Component.extend(HasChildren, HasSelectableChildren, ResizeHandler,
+import HasChildren from 'ember-leaf-core/mixins/leaf-has-children'
+import HasSelectableChildren from 'ember-leaf-core/mixins/leaf-has-selectable-children'
+import ResizeHandler from 'ember-leaf-core/mixins/leaf-resize-handler'
+import layout from 'ember-leaf-core/templates/components/leaf-wizards-control'
+
+WizardsControl = Component.extend(HasChildren, HasSelectableChildren, ResizeHandler,
   layout: layout
 
   tagName: 'div'
@@ -18,14 +22,14 @@ LeafWizardsControlComponent = Ember.Component.extend(HasChildren, HasSelectableC
   'step-back': false
 
   'completed-steps': null
-  steps: Ember.computed.alias('instances.length')
+  steps: alias('instances.length')
 
   initializeCompleted: ( ->
-    @set('completed-steps', Ember.A()) if !@get('completed-steps')
+    @set('completed-steps', A()) if !@get('completed-steps')
   ).on('init')
 
   resizeStepItems: ( ->
-    Ember.run.scheduleOnce 'afterRender', this, @_resizeSteps
+    scheduleOnce 'afterRender', this, @_resizeSteps
   ).observes('steps', 'min-steps-width').on('didInsertElement')
 
 
@@ -35,7 +39,7 @@ LeafWizardsControlComponent = Ember.Component.extend(HasChildren, HasSelectableC
     # (the delay depends on the fact that the very first step of 'fadeIn' animations, ie:
     #  when we are in a modal, has :visible false)
     # Yes it is ugly, find a better way FIXME
-    Ember.run.later(this, (->
+    later(this, (->
       if @.$() && @.$().is(":visible")
         if @.$().width() > (@get('min-step-width') * @get('steps'))
           width = Math.floor(@.$().width() / @get('steps'))
@@ -47,7 +51,7 @@ LeafWizardsControlComponent = Ember.Component.extend(HasChildren, HasSelectableC
   positionStepItems: (->
 
     if @get('selected')
-      Ember.run.scheduleOnce 'afterRender', this, @_positionSteps
+      scheduleOnce 'afterRender', this, @_positionSteps
   ).observes('selected')
 
   _positionSteps: ->
@@ -76,4 +80,4 @@ LeafWizardsControlComponent = Ember.Component.extend(HasChildren, HasSelectableC
 
 )
 
-`export default LeafWizardsControlComponent`
+export default WizardsControl

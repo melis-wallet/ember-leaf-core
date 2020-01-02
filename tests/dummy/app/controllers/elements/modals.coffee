@@ -1,9 +1,11 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
+import { inject as service } from '@ember/service'
+import { later } from '@ember/runloop'
 
-AlertsController = Ember.Controller.extend(
+AlertsController = Controller.extend(
   alTypes: ['info', 'success', 'warning', 'danger']
 
-  modalManager: Ember.inject.service('leaf-modals-manager')
+  modalManager: service('leaf-modals-manager')
 
   actions:
     setOpenModal: ->
@@ -32,6 +34,18 @@ AlertsController = Ember.Controller.extend(
       )
 
 
+    openMultiModal: ->
+      i = 0
+      ['test-mm-1', 'test-mm-2', 'test-mm-3'].forEach((m) =>
+        later(@, (->
+          @get('modalManager').showModal(m).then((res) ->
+            console.log "promise returned: ", m, res
+          ).catch((e) ->
+            console.log "Rejected", m, e
+          )
+        ), (1000 * i++))
+      )
+
 
 
     openModal: (modal)->
@@ -43,4 +57,5 @@ AlertsController = Ember.Controller.extend(
       )
 
 )
-`export default AlertsController`
+
+export default AlertsController

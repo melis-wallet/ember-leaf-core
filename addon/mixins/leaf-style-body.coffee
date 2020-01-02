@@ -1,14 +1,17 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { schedule } from '@ember/runloop'
+import $ from 'jquery'
 
-StyleBody = Ember.Mixin.create(
+
+StyleBody = Mixin.create(
   activate: ->
     @_super()
     cssClasses = @get('classNames')
 
     if cssClasses
-      Ember.run.schedule('afterRender', null, ->
+      schedule('afterRender', null, ->
         cssClasses.forEach( (curClass) ->
-          Ember.$('body').addClass(curClass)
+          $('body').addClass(curClass)
         )
       )
 
@@ -17,11 +20,11 @@ StyleBody = Ember.Mixin.create(
     cssClasses = @get('classNames')
 
     if cssClasses
-      Ember.run.schedule('afterRender', null, ->
+      schedule('afterRender', null, ->
         cssClasses.forEach( (curClass) ->
-          Ember.$('body').removeClass(curClass)
+          $('body').removeClass(curClass)
         )
       )
 )
 
-`export default StyleBody`
+export default StyleBody

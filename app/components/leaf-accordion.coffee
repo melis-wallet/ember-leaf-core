@@ -1,2 +1,2 @@
-`import LeafAccordionComponent from 'ember-leaf-core/components/leaf-accordion'`
-`export default LeafAccordionComponent`
+import AccordionComponent from 'ember-leaf-core/components/leaf-accordion'
+export default AccordionComponent

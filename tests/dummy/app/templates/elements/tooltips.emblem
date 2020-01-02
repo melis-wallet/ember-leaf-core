@@ -7,9 +7,14 @@
         = leaf-tooltip tooltip='Hello World'
           ' On an arbitrary element
 
-    = leaf-panel simple-header=true title='Typed Tooltips' icon='fa fa-leaf'
+    = leaf-panel simple-header=true title='Positions' icon='fa fa-leaf'
       .panel-body
-        = leaf-button label='Success' tooltip='Hello World' type='success' tooltip-class='tooltip-success'
+        = leaf-button label='Top' tooltip='top' tooltip-placement='top'
+        = leaf-button label='Bottom' tooltip='bottom' tooltip-placement='bottom'
+        = leaf-button label='Left' tooltip='left' tooltip-placement='left'
+        = leaf-button label='Right' tooltip='right' tooltip-placement='right'
+
+
 
 
   .col-md-6

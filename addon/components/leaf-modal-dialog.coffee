@@ -1,10 +1,11 @@
-`import Ember from 'ember'`
-`import SimpleAnimations from 'ember-leaf-core/mixins/leaf-simple-animations'`
-`import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-modal-dialog'`
+import Component from '@ember/component'
+
+import SimpleAnimations from 'ember-leaf-core/mixins/leaf-simple-animations'
+import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'
+import layout from 'ember-leaf-core/templates/components/leaf-modal-dialog'
 
 
-LeafModalDialogComponent = Ember.Component.extend(SimpleAnimations, SizeSupport,
+ModalDialog = Component.extend(SimpleAnimations, SizeSupport,
   layout: layout
 
   classNames: ['modal-dialog']
@@ -39,4 +40,4 @@ LeafModalDialogComponent = Ember.Component.extend(SimpleAnimations, SizeSupport,
   ).on('init')
 )
 
-`export default LeafModalDialogComponent`
+export default ModalDialog

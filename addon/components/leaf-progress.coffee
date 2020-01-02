@@ -1,8 +1,9 @@
-`import Ember from 'ember'`
-`import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-progress'`
+import Component from '@ember/component'
 
-LeafProgressComponent = Ember.Component.extend(
+import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'
+import layout from 'ember-leaf-core/templates/components/leaf-progress'
+
+ProgressComponent = Component.extend(
   layout: layout
 
   tagName: 'div'
@@ -27,4 +28,4 @@ LeafProgressComponent = Ember.Component.extend(
 
 )
 
-`export default LeafProgressComponent`
+export default ProgressComponent

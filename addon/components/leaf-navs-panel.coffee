@@ -1,8 +1,10 @@
-`import Ember from 'ember'`
-`import HasParent from 'ember-leaf-core/mixins/leaf-has-parent'`
-`import layout from 'ember-leaf-core/templates/components/leaf-navs-panel'`
+import Component from '@ember/component'
+import { alias } from '@ember/object/computed'
 
-LeafNavsPanelComponent = Ember.Component.extend(HasParent,
+import HasParent from 'ember-leaf-core/mixins/leaf-has-parent'
+import layout from 'ember-leaf-core/templates/components/leaf-navs-panel'
+
+NavsPanel = Component.extend(HasParent,
   layout: layout
 
   tagName: 'div'
@@ -11,7 +13,7 @@ LeafNavsPanelComponent = Ember.Component.extend(HasParent,
   attributeBindings: ['selected', 'active']
   classNameBindings: ['active:active']
 
-  delayRender: Ember.computed.alias('parent.delay-render')
+  delayRender: alias('parent.delay-render')
 
   rendered: ( ->
     if @get('delayRender')
@@ -57,4 +59,4 @@ LeafNavsPanelComponent = Ember.Component.extend(HasParent,
 
 )
 
-`export default LeafNavsPanelComponent`
+export default NavsPanel

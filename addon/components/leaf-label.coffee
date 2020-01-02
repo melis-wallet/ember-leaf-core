@@ -1,8 +1,9 @@
-`import Ember from 'ember'`
-`import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-label'`
+import Component from '@ember/component'
 
-LeafLabelComponent = Ember.Component.extend(TypeSupport,
+import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'
+import layout from 'ember-leaf-core/templates/components/leaf-label'
+
+LabelComponent = Component.extend(TypeSupport,
   layout: layout
 
   tagName: 'span'
@@ -15,4 +16,4 @@ LeafLabelComponent = Ember.Component.extend(TypeSupport,
   classTypePrefix: 'label'
 )
 
-`export default LeafLabelComponent`
+export default LabelComponent

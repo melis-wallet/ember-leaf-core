@@ -1,10 +1,13 @@
-`import Ember from 'ember'`
-`import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'`
-`import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'`
-`import TooltipSupport from 'ember-leaf-core/mixins/leaf-tooltip-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-button'`
+import Component from '@ember/component'
+import { isBlank, isPresent, isNone } from '@ember/utils'
+import RSVP from 'rsvp'
 
-LeafButtonComponent = Ember.Component.extend(TypeSupport, SizeSupport, TooltipSupport,
+import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'
+import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'
+import TooltipSupport from 'ember-leaf-core/mixins/leaf-tooltip-support'
+import layout from 'ember-leaf-core/templates/components/leaf-button'
+
+ButtonComponent = Component.extend(TypeSupport, SizeSupport, TooltipSupport,
   layout: layout
 
   tagName: 'button'
@@ -18,10 +21,10 @@ LeafButtonComponent = Ember.Component.extend(TypeSupport, SizeSupport, TooltipSu
   btnstate: null
   btype: null
 
-  value: null
-
   'action-target': null
   'show-state': null
+
+  flat: true
 
   group: null
 
@@ -70,13 +73,13 @@ LeafButtonComponent = Ember.Component.extend(TypeSupport, SizeSupport, TooltipSu
   ###
 
   click: (->
-    deferred = Ember.RSVP.defer()
+    deferred = RSVP.defer()
 
     if target = @get('action-target')
       target.send(@get('on-click'), @get('value'))
     else
       if @get('show-state')
-        deferred = Ember.RSVP.defer()
+        deferred = RSVP.defer()
         @setProperties
           btnstate: 'executing'
           disabled: true
@@ -99,9 +102,9 @@ LeafButtonComponent = Ember.Component.extend(TypeSupport, SizeSupport, TooltipSu
     if group = @get('group')
       props = group.getProperties('type', 'size', 'block', 'outline', 'flat')
       for key, value of props
-        @set(key, value) if Ember.isNone(@get(key))
+        @set(key, value) if isNone(@get(key))
 
   ).on('init')
 )
 
-`export default LeafButtonComponent`
+export default ButtonComponent

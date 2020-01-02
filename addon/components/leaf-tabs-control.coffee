@@ -1,11 +1,13 @@
-`import Ember from 'ember'`
-`import HasChildren from 'ember-leaf-core/mixins/leaf-has-children'`
-`import HasSelectableChildren from 'ember-leaf-core/mixins/leaf-has-selectable-children'`
-`import ResizeTabdrop from 'ember-leaf-core/mixins/leaf-resize-tabdrop'`
-`import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'`
-`import layout from 'ember-leaf-core/templates/components/leaf-tabs-control'`
+import Component from '@ember/component'
+import { scheduleOnce } from '@ember/runloop'
 
-LeafTabsControlComponent = Ember.Component.extend(HasChildren, HasSelectableChildren, ResizeTabdrop, SizeSupport,
+import HasChildren from 'ember-leaf-core/mixins/leaf-has-children'
+import HasSelectableChildren from 'ember-leaf-core/mixins/leaf-has-selectable-children'
+import ResizeTabdrop from 'ember-leaf-core/mixins/leaf-resize-tabdrop'
+import SizeSupport from 'ember-leaf-core/mixins/leaf-size-support'
+import layout from 'ember-leaf-core/templates/components/leaf-tabs-control'
+
+TabsControl = Component.extend(HasChildren, HasSelectableChildren, ResizeTabdrop, SizeSupport,
   layout: layout
 
   tagName: 'ul'
@@ -64,10 +66,10 @@ LeafTabsControlComponent = Ember.Component.extend(HasChildren, HasSelectableChil
       when 39, 40 then @selectNextChild()
 
     event.preventDefault()
-    Ember.run.scheduleOnce('afterRender', this, @focusSelectedTab);
+    scheduleOnce('afterRender', this, @focusSelectedTab);
   ).on('keyDown')
 
 
 )
 
-`export default LeafTabsControlComponent`
+export default TabsControl

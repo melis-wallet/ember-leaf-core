@@ -11,4 +11,4 @@ ToastsInitializer = {
 
 }
 
-`export default ToastsInitializer`
+export default ToastsInitializer

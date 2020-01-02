@@ -1,14 +1,38 @@
 .row
   .col-md-6
     = leaf-panel simple-header=true title='Dropdowns' icon='fa fa-leaf' style='min-height: 200px;'
-      .spaced
-        = leaf-dropdown class='fubar' style='display: block; position: relative;'
-          = leaf-dropdown-option action='foo_foo' value='Foo' label='Foo'
-          = leaf-dropdown-option action='foo_foo' value='Bar' label='Bar'
-          = leaf-dropdown-option action='foo_foo' value='Baz' label='Baz'
-      .spaced
+      .panel-body
+        .spaced
+          = leaf-dropdown class='fubar' as |dd|
+            = dd.toggle
+              | Dropdown
+              span.caret
+            = dd.menu as |m|
+              = m.item
+                m.link-to 'Foo' 'index'
+              = m.item
+                m.link-to 'Bar' 'index'
+              = m.item
+                m.link-to 'Baz' 'index'
+        .spaced
 
-        = leaf-dropdown  style='display: block; position: relative;'
+          = leaf-dropdown class='fubar' as |dd|
+            = dd.toggle
+              | Dropdown
+              span.caret
+            = dd.menu as |m|
+              = m.item
+
+                = leaf-label class='pull-right' type='success'
+                  | 12
+              = m.item
+                = leaf-badge class='pull-right' type='info'
+                  | 4
+              = m.divider
+              = m.item
+                m.link-to 'Baz' 'index'
+
+        /= leaf-dropdown  style='display: block; position: relative;'
           = leaf-dropdown-option action='foo_foo' label='Foo' icon='fa fa-home'
             = leaf-label class='pull-right' type='success'
               | 12
@@ -23,7 +47,7 @@
 
 
 
-    = leaf-panel simple-header=true title='Dropdowns' icon='fa fa-leaf'
+    /= leaf-panel simple-header=true title='Dropdowns' icon='fa fa-leaf'
       .spaced
         = leaf-dropdown-button label='Select one' on-paired-button='buttonClicked'
           = leaf-dropdown-option action='foo_foo' value='Foo' label='Foo'

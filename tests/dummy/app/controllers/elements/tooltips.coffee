@@ -1,6 +1,6 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
 
-TooltipsController = Ember.Controller.extend(
+TooltipsController = Controller.extend(
 
   showHidden: false
 
@@ -10,4 +10,5 @@ TooltipsController = Ember.Controller.extend(
       false
 
 )
-`export default TooltipsController`
+
+export default TooltipsController

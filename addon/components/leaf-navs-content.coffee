@@ -1,8 +1,9 @@
-`import Ember from 'ember'`
-`import HasChildren from 'ember-leaf-core/mixins/leaf-has-children'`
-`import layout from 'ember-leaf-core/templates/components/leaf-navs-content'`
+import Component from '@ember/component'
 
-LeafNavsContentComponent = Ember.Component.extend(HasChildren,
+import HasChildren from 'ember-leaf-core/mixins/leaf-has-children'
+import layout from 'ember-leaf-core/templates/components/leaf-navs-content'
+
+NavsContent = Component.extend(HasChildren,
   layout: layout
 
   tagName: 'section'
@@ -38,4 +39,4 @@ LeafNavsContentComponent = Ember.Component.extend(HasChildren,
 
 )
 
-`export default LeafNavsContentComponent`
+export default NavsContent

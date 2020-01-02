@@ -1,7 +1,7 @@
-`import Ember from 'ember'`
-`import AsWizard from 'ember-leaf-core/mixins/leaf-as-wizard'`
+import Component from '@ember/component'
+import AsWizard from 'ember-leaf-core/mixins/leaf-as-wizard'
 
-TestWizardComponent = Ember.Component.extend(AsWizard,
+TestWizard = Component.extend(AsWizard,
 
   step: 1
   completeOn: 5
@@ -12,4 +12,5 @@ TestWizardComponent = Ember.Component.extend(AsWizard,
       @set('step', value + 1)
 
 )
-`export default TestWizardComponent`
+
+export default TestWizard

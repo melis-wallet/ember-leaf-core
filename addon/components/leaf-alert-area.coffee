@@ -1,7 +1,8 @@
-`import Ember from 'ember'`
-`import layout from 'ember-leaf-core/templates/components/leaf-alert-area'`
+import Component from '@ember/component'
 
-LeafAlertAreaComponent = Ember.Component.extend(
+import layout from 'ember-leaf-core/templates/components/leaf-alert-area'
+
+AlertArea = Component.extend(
   layout: layout
 
   alerts: []
@@ -32,4 +33,4 @@ LeafAlertAreaComponent = Ember.Component.extend(
 
 )
 
-`export default LeafAlertAreaComponent`
+export default AlertArea

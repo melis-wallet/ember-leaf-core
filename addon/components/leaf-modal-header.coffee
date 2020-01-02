@@ -1,7 +1,8 @@
-`import Ember from 'ember'`
-`import layout from 'ember-leaf-core/templates/components/leaf-modal-header'`
+import Component from '@ember/component'
 
-LeafModalHeaderComponent = Ember.Component.extend(
+import layout from 'ember-leaf-core/templates/components/leaf-modal-header'
+
+ModalHeader = Component.extend(
   layout: layout
 
   classNames: ['modal-header']
@@ -27,4 +28,4 @@ LeafModalHeaderComponent = Ember.Component.extend(
 
 )
 
-`export default LeafModalHeaderComponent`
+export default ModalHeader

@@ -1,2 +1,2 @@
-`import LeafTabComponent from 'ember-leaf-core/components/leaf-tab'`
-`export default LeafTabComponent`
+import TabComponent from 'ember-leaf-core/components/leaf-tab'
+export default TabComponent

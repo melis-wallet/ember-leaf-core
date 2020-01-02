@@ -1,2 +1,2 @@
-`import LeafListGroupComponent from 'ember-leaf-core/components/leaf-list-group'`
-`export default LeafListGroupComponent`
+import ListGroup from 'ember-leaf-core/components/leaf-list-group'
+export default ListGroup

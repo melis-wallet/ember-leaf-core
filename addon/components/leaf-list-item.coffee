@@ -1,9 +1,10 @@
-`import Ember from 'ember'`
-`import AsItem from 'ember-leaf-core/mixins/leaf-as-item'`
+import Component from '@ember/component'
 
-LeafListItemComponent = Ember.Component.extend(AsItem,
+import AsItem from 'ember-leaf-core/mixins/leaf-as-item'
+
+ListItem = Component.extend(AsItem,
   tagName: 'li'
   classNames: ['list-group-item']
 )
 
-`export default LeafListItemComponent`
+export default ListItem

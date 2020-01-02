@@ -1,2 +1,2 @@
-`import LeafModalButtonComponent from 'ember-leaf-core/components/leaf-modal-button'`
-`export default LeafModalButtonComponent`
+import ModalButton from 'ember-leaf-core/components/leaf-modal-button'
+export default ModalButton

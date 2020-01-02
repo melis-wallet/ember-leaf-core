@@ -18,23 +18,23 @@
           .form-group
             label.control-label.col-sm-2 Type
             .input-group
-              = x-select value=toastType class='form-control'
+              = x-select value=toastType class='form-control' as |xs|
                 = each toastTypes as |type|
-                  = x-option value=type
+                  = xs.option value=type
                     = type
 
           .form-group
             label.control-label.col-sm-2 Location
             .input-group
-              = x-select value=toastLocation class='form-control'
+              = x-select value=toastLocation class='form-control' as |xs|
                 = each toastLocations as |loca|
-                  = x-option value=loca
+                  = xs.option value=loca
                     = loca
 
           .form-group
             label.control-label.col-sm-2 Status
             .input-group
-              = x-select value=toastStatus class='form-control'
+              = x-select value=toastStatus class='form-control' as |xs|
                 = each toastStatuses as |stat|
-                  = x-option value=stat
+                  = xs.option value=stat
                     = stat

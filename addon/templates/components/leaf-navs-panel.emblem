@@ -1,4 +1,3 @@
 = if rendered
   = yield this
 
-

@@ -1,8 +1,10 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { computed } from '@ember/object'
+import { A } from '@ember/array'
 
 
-AlertableMixin = Ember.Mixin.create(
-  elementAlerts: Ember.computed -> Ember.A()
+AlertableMixin = Mixin.create(
+  elementAlerts: computed -> A()
 
 
   alertInfo: (message, dismiss) ->
@@ -28,4 +30,4 @@ AlertableMixin = Ember.Mixin.create(
 
 )
 
-`export default AlertableMixin`
+export default AlertableMixin

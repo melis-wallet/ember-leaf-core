@@ -1,6 +1,6 @@
-`import Ember from 'ember'`
+import Mixin from "@ember/object/mixin"
 
-TypeSupport = Ember.Mixin.create(
+TypeSupport = Mixin.create(
 
     classTypePrefix: null
     classNameBindings: ['typeClass']
@@ -13,4 +13,4 @@ TypeSupport = Ember.Mixin.create(
     ).property('type')
 )
 
-`export default TypeSupport`
+export default TypeSupport

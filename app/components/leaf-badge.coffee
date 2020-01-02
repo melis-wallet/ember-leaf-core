@@ -1,2 +1,2 @@
-`import LeafBadgeComponent from 'ember-leaf-core/components/leaf-badge'`
-`export default LeafBadgeComponent`
+import BadgeComponent from 'ember-leaf-core/components/leaf-badge'
+export default BadgeComponent

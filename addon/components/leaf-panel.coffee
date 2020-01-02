@@ -1,9 +1,10 @@
-`import Ember from 'ember'`
-`import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'`
-`import StyleBindings from 'ember-leaf-core/mixins/leaf-style-bindings'`
-`import layout from 'ember-leaf-core/templates/components/leaf-panel'`
+import Component from '@ember/component'
 
-LeafPanelComponent = Ember.Component.extend(TypeSupport, StyleBindings,
+import TypeSupport from 'ember-leaf-core/mixins/leaf-type-support'
+import StyleBindings from 'ember-leaf-core/mixins/leaf-style-bindings'
+import layout from 'ember-leaf-core/templates/components/leaf-panel'
+
+PanelComponent = Component.extend(TypeSupport, StyleBindings,
   layout: layout
 
   tagName: 'section'
@@ -15,4 +16,4 @@ LeafPanelComponent = Ember.Component.extend(TypeSupport, StyleBindings,
     @sendAction('on-click')
 )
 
-`export default LeafPanelComponent`
+export default PanelComponent

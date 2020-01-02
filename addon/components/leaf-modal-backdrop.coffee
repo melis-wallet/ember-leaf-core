@@ -1,7 +1,8 @@
-`import Ember from 'ember'`
-`import SimpleAnimations from 'ember-leaf-core/mixins/leaf-simple-animations'`
+import Component from '@ember/component'
 
-LeafModalBackDropComponent = Ember.Component.extend(SimpleAnimations,
+import SimpleAnimations from 'ember-leaf-core/mixins/leaf-simple-animations'
+
+ModalBackDrop = Component.extend(SimpleAnimations,
 
   classNames: ['modal-backdrop']
 
@@ -37,4 +38,4 @@ LeafModalBackDropComponent = Ember.Component.extend(SimpleAnimations,
     @sendAction('on-click')
 )
 
-`export default LeafModalBackDropComponent`
+export default ModalBackDrop

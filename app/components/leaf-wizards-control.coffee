@@ -1,2 +1,2 @@
-`import LeafWizardsControlComponent from 'ember-leaf-core/components/leaf-wizards-control'`
-`export default LeafWizardsControlComponent`
+import WizardsControl from 'ember-leaf-core/components/leaf-wizards-control'
+export default WizardsControl

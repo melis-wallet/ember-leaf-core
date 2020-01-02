@@ -1,7 +1,8 @@
-`import Ember from 'ember'`
+import Mixin from '@ember/object/mixin'
+import { A } from '@ember/array'
 
 
-HasChildren = Ember.Mixin.create(
+HasChildren = Mixin.create(
 
   #
   #
@@ -25,9 +26,7 @@ HasChildren = Ember.Mixin.create(
   #
   #
   #
-  setup: (->
-    @set('children', Ember.A())
-  ).on('init')
+  setup: (-> @set('children', A())).on('init')
 )
 
-`export default HasChildren`
+export default HasChildren

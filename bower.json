@@ -1,9 +1,6 @@
 {
   "name": "ember-leaf-core",
   "dependencies": {
-
-    "bootstrap-sass-official": "~3.3.6",
-    "font-awesome": "~4.7.0",
     "animate.css": "~3.5.2"
   }
 }

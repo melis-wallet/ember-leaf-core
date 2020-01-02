@@ -1,8 +1,12 @@
-`import Ember from 'ember'`
-`import StyleBindings from 'ember-leaf-core/mixins/leaf-style-bindings'`
-`import layout from 'ember-leaf-core/templates/components/leaf-modal'`
+import Component from '@ember/component'
+import { inject as service } from '@ember/service'
+import { scheduleOnce, schedule } from '@ember/runloop'
+import RSVP from 'rsvp'
 
-LeafModalComponent = Ember.Component.extend(StyleBindings,
+import StyleBindings from 'ember-leaf-core/mixins/leaf-style-bindings'
+import layout from 'ember-leaf-core/templates/components/leaf-modal'
+
+ModalComponent = Component.extend(StyleBindings,
   layout: layout
 
 
@@ -15,7 +19,7 @@ LeafModalComponent = Ember.Component.extend(StyleBindings,
   #
   # reference to the modal manager
   #
-  manager: Ember.inject.service('leaf-modals-manager')
+  manager: service('leaf-modals-manager')
 
 
   #
@@ -149,12 +153,12 @@ LeafModalComponent = Ember.Component.extend(StyleBindings,
 
     @set 'is-open', 'true'
 
-    Ember.run.scheduleOnce 'afterRender',  =>
+    scheduleOnce 'afterRender',  =>
       @.$(document.body).addClass('modal-open')
 
 
     #Wait for component to get rendered, required for CSS effects and to notify consumers that the modal is visible now
-    Ember.run.schedule('afterRender', this, ->
+    schedule('afterRender', this, ->
       @set 'did-open', 'true'
       @trigger 'shown'
     )
@@ -176,13 +180,13 @@ LeafModalComponent = Ember.Component.extend(StyleBindings,
         @setProperties
           'is-open': undefined
           'did-open': undefined
-        Ember.run.scheduleOnce 'afterRender',  =>
+        scheduleOnce 'afterRender',  =>
           b = @.$(document.body)
           b.removeClass('modal-open') if b
         @get('manager').modalClosed(this, valid, value)
       )
     else
-      Ember.RSVP.resolve()
+      RSVP.resolve()
 
 
   #
@@ -242,4 +246,4 @@ LeafModalComponent = Ember.Component.extend(StyleBindings,
 
 )
 
-`export default LeafModalComponent`
+export default ModalComponent

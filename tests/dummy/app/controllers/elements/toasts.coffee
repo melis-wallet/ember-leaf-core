@@ -1,6 +1,6 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
 
-ListViewController = Ember.Controller.extend(
+ListViewController = Controller.extend(
 
   toastText: 'Hello, World!'
   toastType: 'info'
@@ -30,4 +30,4 @@ ListViewController = Ember.Controller.extend(
       @toasts.showError("Error! Closes all the passives", closePassive: true)
 )
 
-`export default ListViewController`
+export default ListViewController

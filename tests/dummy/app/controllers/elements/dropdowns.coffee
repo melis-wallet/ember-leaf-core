@@ -1,6 +1,6 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
 
-DropdownsController = Ember.Controller.extend(
+DropdownsController = Controller.extend(
 
   actions:
     foo_foo: (x) ->
@@ -13,4 +13,5 @@ DropdownsController = Ember.Controller.extend(
 
 
 )
-`export default DropdownsController`
+
+export default DropdownsController

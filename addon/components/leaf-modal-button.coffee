@@ -1,7 +1,7 @@
-`import LeafButton from 'ember-leaf-core/components/leaf-button'`
-`import layout from 'ember-leaf-core/templates/components/leaf-modal-button'`
+import LeafButton from 'ember-leaf-core/components/leaf-button'
+import layout from 'ember-leaf-core/templates/components/leaf-modal-button'
 
-LeafModalButtonComponent = LeafButton.extend(
+ModalButton = LeafButton.extend(
   layout: layout
 
   #
@@ -30,4 +30,4 @@ LeafModalButtonComponent = LeafButton.extend(
   )
 )
 
-`export default LeafModalButtonComponent`
+export default ModalButton

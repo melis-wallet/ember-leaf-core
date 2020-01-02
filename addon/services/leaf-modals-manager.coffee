@@ -1,16 +1,21 @@
-`import Ember from 'ember'`
+import Service from '@ember/service'
+import { A } from '@ember/array'
+import { get, set } from '@ember/object'
+import RSVP from 'rsvp'
+import { filterBy, alias } from '@ember/object/computed'
 
 GLOBAL_ALERT_ID='global-alert'
 
-ModalsManager = Ember.Service.extend(
+ModalsManager = Service.extend(
 
-  modals: Ember.A()
+  modals: A()
 
   activeModal: null
+  exclusiveModals: true
 
   registerModal: (modal) ->
     modals = @get('modals')
-    if modals.findBy('elementId', Ember.get(modal, 'elementId'))
+    if modals.findBy('elementId', get(modal, 'elementId'))
       throw 'modal: duplicate elementId'
     else
       @get('modals').pushObject(modal)
@@ -27,11 +32,11 @@ ModalsManager = Ember.Service.extend(
       @showModal(GLOBAL_ALERT_ID)
     else
       console.log "no modal"
-      Ember.RSVP.reject('global alert notfound')
+      RSVP.reject('global alert notfound')
 
 
   showModal: ((id) ->
-    deferred = Ember.RSVP.defer()
+    deferred = RSVP.defer()
     modal = @get('modals').findBy('elementId', id)
     if modal
       modal.set('deferred', deferred)
@@ -56,13 +61,14 @@ ModalsManager = Ember.Service.extend(
           deferred.reject('closed')
   )
 
-  queuedModals: Ember.computed.filterBy('modals', 'queued', true)
-  firstQueuedModal: Ember.computed.alias('queuedModals.firstObject')
+  queuedModals: filterBy('modals', 'queued', true)
+  firstQueuedModal: alias('queuedModals.firstObject')
 
   queueChanged: (->
     if modal = @get('firstQueuedModal')
        @set('activeModal', modal)
        modal.set('active', true)
+       modal.set('queued', false) if !@get('exclusiveModals')
      else
        @set 'activeModal', null
   ).observes('firstQueuedModal')
@@ -83,4 +89,4 @@ ModalsManager = Ember.Service.extend(
         deferred.reject(value)
 )
 
-`export default ModalsManager`
+export default ModalsManager

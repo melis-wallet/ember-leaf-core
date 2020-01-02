@@ -1,6 +1,6 @@
-`import Ember from 'ember'`
+import EmberObject from '@ember/object'
 
-Toast = Ember.Object.extend
+Toast = EmberObject.extend
   sticky: false
   location: 'bottom'
   status: null
@@ -9,4 +9,4 @@ Toast = Ember.Object.extend
   icon: null
 
 
-`export default Toast`
+export default Toast

@@ -1,20 +1,26 @@
-/* jshint node: true */
-/* global require, module */
-var path = require('path');
+'use strict';
 
-var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+const path = require('path');
+const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
-  var app = new EmberAddon(defaults, {
+  let app = new EmberAddon(defaults, {
     // Add options here
-    sassOptions: {outputFile: 'dummy.css'}
+    sassOptions: {implementation: require("node-sass"), outputFile: 'dummy.css'},
+
+    'ember-bootstrap': {
+      bootstrapVersion: 3,
+      importBootstrapFont: false,
+      importBootstrapCSS: false,
+      whitelist: ['bs-collapse', 'bs-dropdown', 'bs-carousel']
+    }
   });
 
 
-  var componentsPath  = path.join('bower_components/');
+  const componentsPath  = path.join('bower_components/');
 
   /*
-    This build file specifes the options for the dummy test app of this
+    This build file specifies the options for the dummy test app of this
     addon, located in `/tests/dummy`
     This build file does *not* influence how the addon or the app using it
     behave. You most likely want to be modifying `./index.js` or app's build file

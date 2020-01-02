@@ -1,8 +1,10 @@
-`import Ember from 'ember'`
-`import SimpleAnimations from 'ember-leaf-core/mixins/leaf-simple-animations'`
-`import layout from 'ember-leaf-core/templates/components/leaf-toast'`
+import Component from '@ember/component'
+import { later, cancel } from '@ember/runloop'
 
-LeafToastComponent = Ember.Component.extend(SimpleAnimations,
+import SimpleAnimations from 'ember-leaf-core/mixins/leaf-simple-animations'
+import layout from 'ember-leaf-core/templates/components/leaf-toast'
+
+ToastComponent = Component.extend(SimpleAnimations,
   layout: layout
 
   'in-animation': 'fadeInLeft'
@@ -38,7 +40,7 @@ LeafToastComponent = Ember.Component.extend(SimpleAnimations,
     message = @get('message')
 
     if (message.status == 'passive' && !message.sticky)
-      @set 'persistTimer', Ember.run.later(this, (->
+      @set 'persistTimer', later(this, (->
         @set('persistTimer', null)
         @closeToast();
       ), @get('persistTime') )
@@ -46,7 +48,7 @@ LeafToastComponent = Ember.Component.extend(SimpleAnimations,
 
   beforeDestroy: (->
     if timer = @get('persistTimer')
-      Ember.run.cancel(timer)
+      cancel(timer)
       @set('persistTimer', null)
   ).on('willDestroyElement')
 
@@ -60,4 +62,4 @@ LeafToastComponent = Ember.Component.extend(SimpleAnimations,
       @closeToast()
 )
 
-`export default LeafToastComponent`
+export default ToastComponent

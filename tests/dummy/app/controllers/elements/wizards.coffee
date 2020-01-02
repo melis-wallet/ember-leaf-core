@@ -1,13 +1,14 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
+import { inject as service } from '@ember/service'
 
-WizardsController = Ember.Controller.extend(
+WizardsController = Controller.extend(
 
 
-  modalManager: Ember.inject.service('leaf-modals-manager')
+  modalManager: service('leaf-modals-manager')
 
   actions:
     openModalWizard: ->
-      
+
       @get('modalManager').showModal('modal-wizard').then((res) =>
         console.log "promise return"
         console.log res
@@ -16,4 +17,5 @@ WizardsController = Ember.Controller.extend(
         console.log res
       )
 )
-`export default WizardsController`
+
+export default WizardsController

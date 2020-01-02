@@ -1,15 +1,17 @@
-`import Ember from 'ember'`
-`import layout from 'ember-leaf-core/templates/components/leaf-toasts'`
+import Component from '@ember/component'
+import { filter } from '@ember/object/computed'
+
+import layout from 'ember-leaf-core/templates/components/leaf-toasts'
 
 
-LeafToastsComponent = Ember.Component.extend(
+ToastsComponent = Component.extend(
   layout: layout
 
   tagName: 'aside'
   classNames: 'toasts'
   classNameBindings: ['location']
 
-  messages: Ember.computed.filter('toasts.visibleToasts', (toast) ->
+  messages: filter('toasts.visibleToasts', (toast) ->
     # If this instance of the notifications component has no location affinity
     # then it gets all notifications
 
@@ -29,4 +31,4 @@ LeafToastsComponent = Ember.Component.extend(
   ).observes('messages.[]')
 )
 
-`export default LeafToastsComponent`
+export default ToastsComponent

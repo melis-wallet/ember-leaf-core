@@ -1,5 +1,6 @@
-
-`import Ember from 'ember';`
+import Mixin from '@ember/object/mixin'
+import { typeOf } from '@ember/utils'
+import { computed, defineProperty } from '@ember/object'
 
 ###*
 # Provides styleBindings property to bind style
@@ -9,7 +10,7 @@
 # @public
 ###
 
-StyleBindingsMixin = Ember.Mixin.create
+StyleBindingsMixin = Mixin.create
 
   ###*
   # Add `styleBindings` property as a `concatenatedProperties`.
@@ -45,7 +46,7 @@ StyleBindingsMixin = Ember.Mixin.create
 
     return if value is undefined
 
-    value = value + @get("unit") if Ember.typeOf(value) is "number"
+    value = value + @get("unit") if typeOf(value) is "number"
     (styleName + ":" + value + ";")
 
   ###*
@@ -73,7 +74,7 @@ StyleBindingsMixin = Ember.Mixin.create
       lookup[style]
     )
 
-    styleComputed = Ember.computed(->
+    styleComputed = computed(->
       styleTokens = styles.map((style) =>
         @buildStyleString style, lookup[style]
       )
@@ -82,8 +83,8 @@ StyleBindingsMixin = Ember.Mixin.create
     )
 
     styleComputed.property.apply styleComputed, properties
-    Ember.defineProperty @, "style", styleComputed
+    defineProperty @, "style", styleComputed
 
   ).on('init')
 
-`export default StyleBindingsMixin`
+export default StyleBindingsMixin

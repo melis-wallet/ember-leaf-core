@@ -1,8 +1,9 @@
-`import Ember from 'ember'`
+import Controller from '@ember/controller'
 
-AccordionsController = Ember.Controller.extend(
+AccordionsController = Controller.extend(
   acTypes: ['info', 'success', 'warning', 'danger']
 
 
 )
-`export default AccordionsController`
+
+export default AccordionsController

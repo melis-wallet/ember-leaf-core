@@ -1,12 +1,12 @@
 = if simple-header
   .panel-heading
-    a.accordion-toggle class=accordionToggleClass href='#' click='selectPanel'
+    a.accordion-toggle class="{{if active 'expanded' 'collapsed' }}" href='#' click='selectPanel'
       = if icon
         span.label
           i class=icon
       '
       = title
-div class=accordionBodyClass
+= bs-collapse collapsed=(not active) ariaRole='tabpanel' class='panel-collapse'
   = if body
     .panel-body
       = yield
