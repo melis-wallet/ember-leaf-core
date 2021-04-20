@@ -13,6 +13,8 @@ module.exports = {
   name: 'ember-leaf-core',
 
   included( app, parentAddon ) {
+    this._super.included.apply(this, arguments);
+
     let target = (parentAddon || app);
 
     let componentsPath = target.bowerDirectory;
